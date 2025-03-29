@@ -1,0 +1,37 @@
+body{
+    background-image: url(/imagenes/pngtree-cat-and-dog-pets-in-real-pictures-wallpapers-picture-image_3426222.jpg);
+    background-size: cover;
+    background-color: rgb(187, 241, 223);;
+    
+}
+#informacion{
+background-color:rgba(255, 255, 255, 0.295);
+background-size: contain;
+margin-top: 30px;
+color:rgb(2, 2, 73);
+font-family: Gill Sans MT;
+width: 1840px;
+height: 80px;
+text-align: center;
+border:  #030303 solid;
+
+}
+#logoinformacion{
+  
+    margin-top: -85px;
+    margin-left: 0px;
+}
+#DIV1{
+background-color:rgba(187, 241, 223, 0.829);
+background-size: contain;
+margin-top: 30px;
+color: black;
+font-family: Gill Sans MT;
+width: 1700px;
+height: 800px;
+text-align: center;
+border:  #030303 solid;
+margin-left: 65px;
+
+    
+}

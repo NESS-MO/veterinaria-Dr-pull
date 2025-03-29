@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calendar {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .calendar th, .calendar td {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        .calendar th {
+            background-color: #f4f4f4;
+        }
+        .calendar td {
+            height: 50px;
+            vertical-align: middle;
+        }
+        .calendar td.empty {
+            background-color: #f9f9f9;
+        }
+        .calendar td:hover {
+            background-color: #f1f1f1;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .month-name {
+            font-size: 24px;
+        }
+        .btn {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="btn" onclick="changeMonth(-1)">Anterior</button>
+        <div class="month-name" id="month-name"></div>
+        <button class="btn" onclick="changeMonth(1)">Siguiente</button>
+    </div>
+
+    <table class="calendar" id="calendar">
+        <thead>
+            <tr>
+                <th>Lun</th>
+                <th>Mar</th>
+                <th>Mié</th>
+                <th>Jue</th>
+                <th>Vie</th>
+                <th>Sáb</th>
+                <th>Dom</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const months = [
+            'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+        ];
+
+        let currentDate = new Date();
+        
+        function renderCalendar() {
+            const month = currentDate.getMonth();
+            const year = currentDate.getFullYear();
+            const monthName = months[month];
+            const firstDay = new Date(year, month, 1).getDay(); // Día de la semana del primer día del mes
+            const daysInMonth = new Date(year, month + 1, 0).getDate(); // Número total de días en el mes
+
+            // Actualiza el nombre del mes
+            document.getElementById('month-name').textContent = `${monthName} ${year}`;
+
+            // Llenar la tabla
+            const tbody = document.getElementById('calendar').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; // Limpiar el calendario antes de volver a renderizar
+
+            let row = document.createElement('tr');
+            let day = 1;
+
+            // Crear celdas vacías hasta llegar al primer día del mes
+            for (let i = 0; i < firstDay; i++) {
+                row.appendChild(document.createElement('td'));
+            }
+
+            // Llenar los días del mes
+            for (let i = firstDay; day <= daysInMonth; i++) {
+                if (i === 7) {
+                    tbody.appendChild(row);
+                    row = document.createElement('tr');
+                    i = 0;
+                }
+                const cell = document.createElement('td');
+                cell.textContent = day;
+                row.appendChild(cell);
+                day++;
+            }
+            // Añadir la última fila si queda alguna
+            if (row.children.length > 0) {
+                tbody.appendChild(row);
+            }
+        }
+
+        function changeMonth(direction) {
+            currentDate.setMonth(currentDate.getMonth() + direction);
+            renderCalendar();
+        }
+
+        // Inicializar el calendario
+        renderCalendar();
+    </script>
+</body>
+</html>

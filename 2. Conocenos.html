@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria Dr Pul</title>
+    <link rel="icon" href="icon/ico.ico">
+    <link rel="icon" href="Imagenes/Logo.png"/>
+</head>
+<style>
+        body {
+            background-color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: radial-gradient(rgb(0, 236, 253), rgb(91, 187, 255));
+            padding: 10px;
+            height: auto;
+        }
+        .eslogan{
+            font-size: 12px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            height: 30px;
+            color: #000;
+            text-decoration: none;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin-right: 20px;
+            padding: 0 50px;
+            background: linear-gradient(90deg, #00ffff, #ffffff);
+            transition: transform 0.3s;
+        }    
+        nav a:hover {
+            transform: translateY(-10px);
+        }      
+        .Logotipo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 30px;
+        }
+        .carousel {
+            width: 100%;
+            position: relative;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+        }
+        .carousel-item img {
+            width: 75%;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+            transform: translateY(-50%);
+        }
+        .prev {
+            left: 10px;
+            border-radius: 20px;
+        }
+        .next {
+            right: 10px;
+            border-radius: 20px;
+        }
+        
+    </style>
+</head>
+<body style="background-repeat: no-repeat; background-size: cover; background-image: url(Imagenes/111755-negro-piso-fila-angulo-ladrillo-2560x1440.jpg)">
+    <header>
+        <div class="Logotipo">
+            <a href="1. Principal.html">
+                <img src="imagenes/logo2.png" alt="logo DR.PUL">
+            </a>
+            <h3 class="eslogan">COMPROMETIDOS CON LA SALUD ANIMAL</h3>
+        </div>
+        <nav>
+            <a href="1. Principal.html" target="_self">INICIO</a>
+            <a href="2. Conocenos.html" target="_self">CONÓCENOS</a>
+            <a href="3. Servicios.html" target="_self">SERVICIOS</a>
+            <a href="Login.html" target="_self">LOGIN</a>     
+        </nav>
+    </header>
+</body>
+</html>
+

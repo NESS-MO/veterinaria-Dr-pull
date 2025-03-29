@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas - Veterinaria</title>
+    <link rel="stylesheet" href="gestionc.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 -->
+</head>
+<body>
+  
+    <div class="container">  
+        <header>
+            <h1>GESTIÓN DE CITAS SOLICITADAS</h1>
+        </header>
+        
+        <section class="citas">
+            <table id="tabla-citas">
+                <thead>
+                    <tr>
+                        <th>Nombre del Usuario</th>
+                        <th>Fecha de Cita</th>
+                        <th>Hora de Cita</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Maria Leon </td>
+                        <td>2025-03-20</td>
+                        <td>10:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Luis Miguel </td>
+                        <td>2025-03-21</td>
+                        <td>11:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Luis Angel </td>
+                        <td>2025-03-11</td>
+                        <td>1:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hernan Rodrguez</td>
+                        <td>2025-07-21</td>
+                        <td>11:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Juan Castillo  </td>
+                        <td>2025-03-21</td>
+                        <td>2:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Camilo  Vargas  </td>
+                        <td>2025-01-11</td>
+                        <td>7:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Maria Gomez </td>
+                        <td>2025-07-11</td>
+                        <td>11:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Sebastian Gomez</td>
+                        <td>2025-01-11</td>
+                        <td>11:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Andrea Ruiz </td>
+                        <td>2025-03-21</td>
+                        <td>11:00</td>
+                        <td><span class="estado pendiente">Pendiente</span></td>
+                        <td>
+                            <button class="confirmar-btn">Confirmar</button>
+                            <button class="rechazar-btn">Rechazar</button>
+                            <button class="modificar-btn">Modificar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="gestionc.js"></script>
+</body>
+</html>
