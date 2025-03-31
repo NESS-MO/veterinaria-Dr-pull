@@ -99,7 +99,7 @@ nav a:hover {
 .logo3 {
     height: 22%;
     position: absolute;
-    bottom: 85px;
+    bottom: 90px;
     left: 49.5%;
     transform: translateX(-50%); /* Centra horizontalmente */
 }
@@ -157,11 +157,7 @@ nav a:hover {
     text-align: center;
 }
 
-.equipo h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #2393b2;
-}
+
 
 .equipo h2 {
     font-size: 28px;
@@ -200,10 +196,17 @@ nav a:hover {
     color: #555;
 }
 
-.conocenos {
+.conocenos {    
     padding: 40px 20px;
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     text-align: center;
+}
+
+.conocenos h1 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #3a6ead;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.281);
 }
 
 .conocenos h2 {
@@ -220,9 +223,14 @@ nav a:hover {
 }
 
 .c1 {
-    width: 100%;
+    align-items: center;
     max-width: 600px;
-    text-align: left;
+    text-align: center;
+    margin-right: 80px;
+    margin-left: 80px;
+    padding: 20px 40px;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .c1 ul {
