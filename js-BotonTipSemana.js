@@ -1,6 +1,7 @@
 function addFloatingTipStyles() {
   const style = document.createElement('style');
   style.textContent = `
+    /* Estilos para el botón flotante */
     .tip {
       position: fixed;
       bottom: 160px;
@@ -8,8 +9,8 @@ function addFloatingTipStyles() {
       z-index: 999;
       display: flex;
       align-items: center;
-      text-decoration: none;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .tip img {
@@ -17,6 +18,8 @@ function addFloatingTipStyles() {
       height: auto;
       transition: all 0.3s ease;
       order: 2;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .tip .tooltip-text {
@@ -34,6 +37,11 @@ function addFloatingTipStyles() {
       order: 1;
       overflow: hidden;
       text-decoration: none;
+      font-weight: 600;
+    }
+
+    .tip:hover {
+      filter: drop-shadow(0 0 8px rgba(58, 110, 173, 0.4));
     }
 
     .tip:hover img {
@@ -47,41 +55,7 @@ function addFloatingTipStyles() {
       padding: 8px 12px;
     }
 
-    .gif {
-      height: 200px;
-    }
-
-    .ventana-tip {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      width: 45%;
-      max-width: 600px;
-      color: black;
-      font-size: 18px;
-      text-align: center;
-      padding: 20px;
-      min-height: 250px;
-      border-radius: 30px;
-      display: none;
-      z-index: 1000; 
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .ventana-tip p {
-      font-size: 15px;
-    }
-
-    .salir {
-      height: 7%;
-      position: absolute;
-      right: 10px;
-      top: 15px;
-      cursor: pointer;
-    }
-
+    /* Estilos para el fondo oscuro */
     #fondo-oscuro {
       display: none;
       position: fixed;
@@ -89,9 +63,152 @@ function addFloatingTipStyles() {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 999.5;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      z-index: 999;
+    }
+
+    /* Estilos mejorados para la ventana TIP */
+    .ventana-tip {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 650px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      display: none;
+      overflow: hidden;
+      animation: aparecer 0.4s ease-out forwards;
+      border: 1px solid #e0e0e0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translate(-50%, -45%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    .contenedor-tip {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .cabecera-tip {
+      background: linear-gradient(135deg, #55c1df, #3a6ead);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .titulo-tip {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .salir {
+      width: 24px;
+      height: 24px;
       cursor: pointer;
+      transition: transform 0.2s;
+      filter: brightness(0) invert(1);
+    }
+
+    .salir:hover {
+      transform: scale(1.1);
+    }
+
+    .cuerpo-tip {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      flex-direction: column;
+    }
+
+    @media (min-width: 768px) {
+      .cuerpo-tip {
+        flex-direction: row;
+      }
+    }
+
+    .imagen-tip {
+      position: relative;
+      flex: 1;
+      min-height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f7fa;
+    }
+
+    .gif-tip {
+      max-width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 10px;
+      z-index: 2;
+    }
+
+    .decoracion-tip {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: #4b6cb7;
+      opacity: 0.1;
+      border-radius: 50%;
+      top: -30px;
+      right: -30px;
+    }
+
+    .contenido-texto-tip {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .subtitulo-tip {
+      color: #2c3e50;
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .texto-tip {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .pie-tip {
+      background: #f5f7fa;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .logo-tip {
+      height: 30px;
+      width: auto;
+    }
+
+    .pie-tip span {
+      color: #666;
+      font-size: 0.8rem;
+      font-style: italic;
     }
   `;
   document.head.appendChild(style);
@@ -107,23 +224,42 @@ function createFloatingTipElements() {
   const tipButton = document.createElement('div');
   tipButton.className = 'tip';
   tipButton.innerHTML = `
-    <img src="Imagenes/tip2.jpg" alt="WhatsApp">
+    <img src="Imagenes/tip2.jpg" alt="Consejo semanal">
     <span class="tooltip-text">¡TIP DE LA SEMANA!</span>
   `;
   
-  // Ventana
+  // Ventana mejorada
   const tipWindow = document.createElement('div');
   tipWindow.className = 'ventana-tip';
   tipWindow.id = 'tipv';
   tipWindow.style.display = 'none';
   tipWindow.innerHTML = `
-    <div class="salir-container">
-      <img src="Imagenes/salida.png" class="salir" alt="Cerrar">
+    <div class="contenedor-tip">
+      <!-- Encabezado con botón de cerrar -->
+      <div class="cabecera-tip">
+        <h2 class="titulo-tip">¡TIP DE LA SEMANA!</h2>
+        <img src="Imagenes/salida.png" class="salir" alt="Cerrar">
+      </div>
+    
+      <!-- Contenido principal -->
+      <div class="cuerpo-tip">
+        <div class="imagen-tip">
+          <img src="Imagenes/gato.gif" alt="Consejo sobre gatos" class="gif-tip">
+          <div class="decoracion-tip"></div>
+        </div>
+        
+        <div class="contenido-texto-tip">
+          <h3 class="subtitulo-tip">Cuida la nutrición de tu gatito</h3>
+          <p class="texto-tip">Si nunca has tenido un gato, es fácil que te dejes llevar por los mitos de la nutrición felina. Muchos dueños primerizos alimentan a sus mascotas con alimentos prohibidos como leche de vaca, huevos crudos o carne cruda, lo que puede afectar severamente su bienestar.</p>
+        </div>
+      </div>
+      
+      <!-- Pie con branding -->
+      <div class="pie-tip">
+        <img src="Imagenes/logo2.png" alt="DR.PUL" class="logo-tip">
+        <span>Comprometidos con la salud animal</span>
+      </div>
     </div>
-    <h1><strong>¡TIP DE LA SEMANA!</strong></h1>
-    <img src="Imagenes/gato.gif" class="gif" alt="Gato">
-    <h2>Cuida la nutrición de tu gatito</h2>
-    <p>Si nunca has tenido un gato, es fácil que te dejes llevar por los mitos de la nutrición felina que existen, y, debido al desconocimiento, esto pueda provocar que alimentes a tu nueva mascota con alimentos prohibidos para los felinos, como, la leche de vaca, los huevos crudos o la carne cruda, alimentos que pueden afectar severamente el bienestar de un felino.</p>
   `;
 
   // Agregar elementos al body
@@ -133,11 +269,11 @@ function createFloatingTipElements() {
 
   // Event listeners
   tipButton.addEventListener('click', tipb);
-  fondoOscuro.addEventListener('click', salir);
+  fondoOscuro.addEventListener('click', salirfo);
   
-  // Event listener para el botón de salir (modificado)
+  // Event listener para el botón de salir
   tipWindow.querySelector('.salir').addEventListener('click', function(e) {
-    e.stopPropagation(); // Evita que el evento se propague al fondo oscuro
+    e.stopPropagation();
     salir();
   });
 }
@@ -148,6 +284,11 @@ function tipb() {
 }
 
 function salir() {
+  document.getElementById("tipv").style.display = "none";
+  document.getElementById("fondo-oscuro").style.display = "none";
+}
+
+function salirfo() {
   document.getElementById("tipv").style.display = "none";
   document.getElementById("fondo-oscuro").style.display = "none";
 }
