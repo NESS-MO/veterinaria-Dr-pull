@@ -298,3 +298,24 @@ document.addEventListener('DOMContentLoaded', function() {
   addFloatingTipStyles();
   createFloatingTipElements();
 });
+
+function updateTipContent() {
+  const tipImage = localStorage.getItem("tipImage");
+  const tipTitle = localStorage.getItem("tipTitle");
+  const tipText = localStorage.getItem("tipText");
+
+  if (tipImage) {
+    document.querySelector(".gif-tip").src = tipImage;
+  }
+  if (tipTitle) {
+    document.querySelector(".subtitulo-tip").textContent = tipTitle;
+  }
+  if (tipText) {
+    document.querySelector(".texto-tip").textContent = tipText;
+  }
+}
+
+// Llamar a la función después de crear los elementos
+document.addEventListener("DOMContentLoaded", function () {
+  updateTipContent();
+});
