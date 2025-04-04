@@ -240,3 +240,56 @@ document.addEventListener("DOMContentLoaded", function() {
         }, !1)
     }), document.body.appendChild(r), s && (u(), 1 !== t.states.fontSize && h(null, t.states.fontSize), t.states.contrast && p(t.states.contrast))
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const contrastButtons = document.querySelectorAll(".contrast-toggle");
+    
+    contrastButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const contrastMode = this.getAttribute("data-contrast");
+            setContrast(contrastMode);
+        });
+    });
+    
+    function setContrast(mode) {
+        let styles = "";
+        
+        if (mode === "dark-contrast") {
+            styles = `
+                body, body * {
+                    background-color: black !important;
+                    color: white !important;
+                    border-color: white !important;
+                }`;
+        } else if (mode === "light-contrast") {
+            styles = `
+                body, body * {
+                    background-color: white !important;
+                    color: black !important;
+                    border-color: black !important;
+                }`;
+        } else if (mode === "high-contrast") {
+            styles = `
+                body, body * {
+                    background-color: black !important;
+                    color: yellow !important;
+                    border-color: yellow !important;
+                    filter: contrast(150%) !important;
+                }`;
+        } else {
+            styles = ""; // Resetear estilos
+        }
+        
+        applyStyles(styles);
+    }
+    
+    function applyStyles(css) {
+        let styleElement = document.getElementById("contrast-style");
+        if (!styleElement) {
+            styleElement = document.createElement("style");
+            styleElement.id = "contrast-style";
+            document.head.appendChild(styleElement);
+        }
+        styleElement.innerHTML = css;
+    }
+});

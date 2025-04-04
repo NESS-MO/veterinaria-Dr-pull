@@ -1,91 +1,59 @@
-//Consulta
-function consultaS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("consultaD") .style.display="block";
-}
-function salir1(){
-    document.getElementById("consultaD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-// Esterilizacioón
-function esteriS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("esteriD") .style.display="block";
-}
-function salir2(){
-    document.getElementById("esteriD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-// Guardería
-function guarderiaS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("guarderiaD") .style.display="block";
-}
-function salir3(){
-    document.getElementById("guarderiaD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-// Vacunación
-function vacunaS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("vacunaD") .style.display="block";
-}
-function salir4(){
-    document.getElementById("vacunaD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-// Profilaxis
-function profilaS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("profilaD") .style.display="block";
-}
-function salir5(){
-    document.getElementById("profilaD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-// Hospitalizacioón
-function hospitalS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("hospitalD") .style.display="block";
-}
-function salir6(){
-    document.getElementById("hospitalD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-// Asistencia
-function asistS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("asistD") .style.display="block";
-}
-function salir7(){
-    document.getElementById("asistD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-// Cirugia
-function cirugiaS(){
-    document.getElementById("fondo-oscuro").style.display = "block";
-    document.getElementById("cirugiaD") .style.display="block";
-}
-function salir8(){
-    document.getElementById("cirugiaD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
-
-function salirfo(){
-    document.getElementById("consultaD") .style.display="none";
-    document.getElementById("esteriD") .style.display="none";
-    document.getElementById("guarderiaD") .style.display="none";
-    document.getElementById("vacunaD") .style.display="none";
-    document.getElementById("profilaD") .style.display="none";
-    document.getElementById("hospitalD") .style.display="none";
-    document.getElementById("asistD") .style.display="none";
-    document.getElementById("cirugiaD") .style.display="none";
-    document.getElementById("fondo-oscuro") .style.display="none";
-}
+// Espera a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtén el elemento del fondo oscuro
+    const fondoOscuro = document.getElementById("fondo-oscuro");
+    
+    // Configura el evento click para el fondo oscuro
+    if (fondoOscuro) {
+        fondoOscuro.addEventListener('click', function(e) {
+            // Solo cierra si se hace click directamente en el fondo
+            if (e.target === fondoOscuro) {
+                cerrarTodasLasVentanas();
+            }
+        });
+    }
+    
+    // Función para cerrar todas las ventanas
+    function cerrarTodasLasVentanas() {
+        const ventanas = [
+            "consultaD", "esteriD", "guarderiaD", 
+            "vacunaD", "profilaD", "hospitalD", 
+            "asistD", "cirugiaD"
+        ];
+        
+        ventanas.forEach(id => {
+            const ventana = document.getElementById(id);
+            if (ventana) ventana.style.display = "none";
+        });
+        
+        if (fondoOscuro) fondoOscuro.style.display = "none";
+    }
+    
+    // Funciones para mostrar ventanas (mantén las tuyas pero simplificadas)
+    function mostrarVentana(id) {
+        const ventana = document.getElementById(id);
+        if (ventana) ventana.style.display = "block";
+        if (fondoOscuro) fondoOscuro.style.display = "block";
+    }
+    
+    // Funciones específicas para cada servicio
+    window.consultaS = function() { mostrarVentana("consultaD"); };
+    window.esteriS = function() { mostrarVentana("esteriD"); };
+    window.guarderiaS = function() { mostrarVentana("guarderiaD"); };
+    window.vacunaS = function() { mostrarVentana("vacunaD"); };
+    window.profilaS = function() { mostrarVentana("profilaD"); };
+    window.hospitalS = function() { mostrarVentana("hospitalD"); };
+    window.asistS = function() { mostrarVentana("asistD"); };
+    window.cirugiaS = function() { mostrarVentana("cirugiaD"); };
+    
+    // Funciones para cerrar ventanas específicas
+    window.salir1 = function() { cerrarTodasLasVentanas(); };
+    window.salir2 = function() { cerrarTodasLasVentanas(); };
+    window.salir3 = function() { cerrarTodasLasVentanas(); };
+    window.salir4 = function() { cerrarTodasLasVentanas(); };
+    window.salir5 = function() { cerrarTodasLasVentanas(); };
+    window.salir6 = function() { cerrarTodasLasVentanas(); };
+    window.salir7 = function() { cerrarTodasLasVentanas(); };
+    window.salir8 = function() { cerrarTodasLasVentanas(); };
+    window.salirfo = cerrarTodasLasVentanas;
+});
