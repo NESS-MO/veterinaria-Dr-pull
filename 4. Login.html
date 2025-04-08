@@ -145,6 +145,10 @@
             pointer-events: none;
             transition: .5s;
         }
+
+        .rol{
+            display: none;
+        }
         
         .username input:focus ~ label,
         .username input:valid ~ label {
@@ -238,7 +242,7 @@
                 <label>Contraseña</label>
             </div>
             <!-- Campo para seleccionar el tipo de usuario (role) -->
-            <div class="username">
+            <div class="rol">
                 <select id="user-type" required>
                     <option value="administrador">Administrador</option>
                 </select>
