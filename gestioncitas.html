@@ -340,91 +340,112 @@
     </style>
 
     <script>
-        // Función para mostrar notificación con SweetAlert2
-        function notificar(mensaje, icono) {
-            Swal.fire({
-                title: mensaje,
-                icon: icono,
-                confirmButtonText: "OK",
-                timer: 2500,
-                showConfirmButton: false,
-                toast: true,
-                position: "top-end"
-            });
+       // Función para mostrar notificación con SweetAlert2
+function notificar(mensaje, icono) {
+    Swal.fire({
+        title: mensaje,
+        icon: icono,
+        confirmButtonText: "OK",
+        timer: 2500,
+        showConfirmButton: false,
+        toast: true,
+        position: "top-end"
+    });
+}
+
+// Función para cambiar el estado de la cita a "Confirmado"
+function confirmarCita(event) {
+    const fila = event.target.closest('tr');
+    const estadoCell = fila.querySelector('.estado');
+    estadoCell.textContent = "Confirmado";
+    estadoCell.classList.remove("pendiente");
+    estadoCell.classList.add("confirmado");
+
+    fila.querySelector('.confirmar-btn').disabled = true;
+    fila.querySelector('.rechazar-btn').disabled = true;
+
+    notificar("✅ La cita ha sido confirmada", "success");
+}
+
+// Función para cambiar el estado de la cita a "Rechazado"
+function rechazarCita(event) {
+    const fila = event.target.closest('tr');
+    const estadoCell = fila.querySelector('.estado');
+    estadoCell.textContent = "Rechazado";
+    estadoCell.classList.remove("pendiente");
+    estadoCell.classList.add("rechazado");
+
+    fila.querySelector('.confirmar-btn').disabled = true;
+    fila.querySelector('.rechazar-btn').disabled = true;
+
+    notificar("❌ La cita ha sido rechazada", "error");
+}
+// Función de búsqueda
+function filtrarCitas() {
+    const query = document.getElementById("search-bar").value.toLowerCase();
+    const filas = document.querySelectorAll("#tabla-citas tbody tr");
+
+    filas.forEach(fila => {
+        let textoFila = fila.innerText.toLowerCase(); // Busca en toda la fila
+        if (textoFila.includes(query)) {
+            fila.style.display = "";
+        } else {
+            fila.style.display = "none";
         }
+    });
+}
 
-        // Función para cambiar el estado de la cita a "Confirmado"
-        function confirmarCita(event) {
-            const fila = event.target.closest('tr');
-            const estadoCell = fila.querySelector('.estado');
-            estadoCell.textContent = "Confirmado";
-            estadoCell.classList.remove("pendiente");
-            estadoCell.classList.add("confirmado");
 
-            fila.querySelector('.confirmar-btn').disabled = true;
-            fila.querySelector('.rechazar-btn').disabled = true;
+// Función para modificar la cita (fecha y hora)
+function modificarCita(event) {
+    const fila = event.target.closest('tr');
+    const fechaActual = fila.children[1].textContent;
+    const horaActual = fila.children[2].textContent;
 
-            notificar("✅ La cita ha sido confirmada", "success");
+    Swal.fire({
+        title: 'Modificar Cita',
+        html: `
+            <label for="nueva-fecha">Nueva Fecha:</label>
+            <input type="date" id="nueva-fecha" class="swal2-input" value="${fechaActual}">
+            <label for="nueva-hora">Nueva Hora:</label>
+            <input type="time" id="nueva-hora" class="swal2-input" value="${horaActual}">
+        `,
+        showCancelButton: true,
+        confirmButtonText: 'Guardar cambios',
+        cancelButtonText: 'Cancelar',
+        preConfirm: () => {
+            const nuevaFecha = document.getElementById('nueva-fecha').value;
+            const nuevaHora = document.getElementById('nueva-hora').value;
+            if (!nuevaFecha || !nuevaHora) {
+                Swal.showValidationMessage('Por favor, completa ambos campos');
+                return false;
+            }
+            return { nuevaFecha, nuevaHora };
         }
-
-        // Función para cambiar el estado de la cita a "Rechazado"
-        function rechazarCita(event) {
-            const fila = event.target.closest('tr');
-            const estadoCell = fila.querySelector('.estado');
-            estadoCell.textContent = "Rechazado";
-            estadoCell.classList.remove("pendiente");
-            estadoCell.classList.add("rechazado");
-
-            fila.querySelector('.confirmar-btn').disabled = true;
-            fila.querySelector('.rechazar-btn').disabled = true;
-
-            notificar("❌ La cita ha sido rechazada", "error");
+    }).then(result => {
+        if (result.isConfirmed) {
+            const { nuevaFecha, nuevaHora } = result.value;
+            fila.children[1].textContent = nuevaFecha;
+            fila.children[2].textContent = nuevaHora;
+            notificar("📅 La cita ha sido actualizada", "success");
         }
+    });
+}
 
-        // Función para mostrar un cuadro de confirmación antes de modificar la cita
-        function modificarCita(event) {
-            Swal.fire({
-                title: "¿Seguro que deseas modificar esta cita?",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonText: "Sí, modificar",
-                cancelButtonText: "No, cancelar",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    notificar("La cita ha sido modificada", "success");
-                }
-            });
-        }
 
-        // Función de búsqueda
-        function filtrarCitas() {
-            const query = document.getElementById("search-bar").value.toLowerCase();
-            const filas = document.querySelectorAll("#tabla-citas tbody tr");
+// Asignar eventos a los botones de las citas
+document.querySelectorAll('.confirmar-btn').forEach(btn => {
+    btn.addEventListener('click', confirmarCita);
+});
 
-            filas.forEach(fila => {
-                let textoFila = fila.innerText.toLowerCase(); // Busca en toda la fila
-                if (textoFila.includes(query)) {
-                    fila.style.display = "";
-                } else {
-                    fila.style.display = "none";
-                }
-            });
-        }
+document.querySelectorAll('.rechazar-btn').forEach(btn => {
+    btn.addEventListener('click', rechazarCita);
+});
 
-        // Asignar eventos a los botones de las citas
-        document.querySelectorAll('.confirmar-btn').forEach(btn => {
-            btn.addEventListener('click', confirmarCita);
-        });
-
-        document.querySelectorAll('.rechazar-btn').forEach(btn => {
-            btn.addEventListener('click', rechazarCita);
-        });
-
-        document.querySelectorAll('.modificar-btn').forEach(btn => {
-            btn.addEventListener('click', modificarCita);
-        });
-    </script>
-
+document.querySelectorAll('.modificar-btn').forEach(btn => {
+    btn.addEventListener('click', modificarCita);
+});
+</script>
 </body>
 </html>
 
