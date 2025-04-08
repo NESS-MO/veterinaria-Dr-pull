@@ -180,7 +180,8 @@
             border: 1px solid #eee;
         }
 
-        .guardar {
+        .guardar,
+        .eliminar {
             background-color: #2980b9;
             color: white;
             border: none;
@@ -195,10 +196,19 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .guardar:hover {
+        .guardar:hover,
+        .eliminar:hover {
             background-color: #3498db;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .eliminar {
+            background-color: #e74c3c;
+        }
+
+        .eliminar:hover {
+            background-color: #c0392b;
         }
 
         /* Responsive design */
@@ -273,6 +283,7 @@
         </div>
 
         <button class="guardar" onclick="saveTip()">Guardar Tip</button>
+        <button class="eliminar" onclick="deleteTip()">Eliminar Tip</button>
     </div>
 
     <script>
@@ -362,6 +373,21 @@
 
             hasChanges = false;
             alert("Tip guardado correctamente. Los cambios se verán reflejados en la página principal.");
+        }
+
+        function deleteTip() {
+            if (confirm("¿Estás seguro de que deseas eliminar el Tip de la Semana?")) {
+                localStorage.removeItem("tipTitle");
+                localStorage.removeItem("tipText");
+                localStorage.removeItem("tipImage");
+
+                // Resetear la interfaz
+                document.getElementById("tipTitle").value = '';
+                document.getElementById("tipText").value = '';
+                document.getElementById("previewImage").style.display = "none";
+
+                alert("Tip eliminado correctamente.");
+            }
         }
     </script>
 </body>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Citas - Veterinaria</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Para los íconos -->
 </head>
 <body>
     
@@ -15,15 +16,20 @@
           <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
           <li><a href="#">Registro Citas</a></li>
           <li><a href="#">Registro Clientes</a></li>
-          <li><a href="">Modificar fotos "Nuetro trabajo"</a></li>
-          <li><a href="modificarservicios.html"> modificar Servicios</a></li>
+          <li><a href="">Modificar fotos "Nuestro trabajo"</a></li>
+          <li><a href="modificarservicios.html">Modificar Servicios</a></li>
           <li><a href="1. Principal.html">Cerrar sesión</a></li>
         </ul>
-      </div>
+    </div>
 
     <div class="container">  
         <header>
             <h1>GESTIÓN DE CITAS SOLICITADAS</h1>
+            <!-- Barra de búsqueda -->
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Buscar cita..." onkeyup="filtrarCitas()" class="search-bar">
+                <i class="fas fa-search search-icon"></i> <!-- Ícono de búsqueda -->
+            </div>
         </header>
         
         <section class="citas">
@@ -60,8 +66,6 @@
                             <button class="modificar-btn">Modificar</button>
                         </td>
                     </tr>
-
-
                     <tr>
                         <td>Luis Angel </td>
                         <td>2025-03-11</td>
@@ -74,7 +78,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Hernan Rodrguez</td>
+                        <td>Hernan Rodríguez</td>
                         <td>2025-07-21</td>
                         <td>11:00</td>
                         <td><span class="estado pendiente">Pendiente</span></td>
@@ -85,7 +89,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Juan Castillo  </td>
+                        <td>Juan Castillo</td>
                         <td>2025-03-21</td>
                         <td>2:00</td>
                         <td><span class="estado pendiente">Pendiente</span></td>
@@ -96,7 +100,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Camilo  Vargas  </td>
+                        <td>Camilo Vargas</td>
                         <td>2025-01-11</td>
                         <td>7:00</td>
                         <td><span class="estado pendiente">Pendiente</span></td>
@@ -106,10 +110,8 @@
                             <button class="modificar-btn">Modificar</button>
                         </td>
                     </tr>
-
-
                     <tr>
-                        <td>Maria Gomez </td>
+                        <td>Maria Gomez</td>
                         <td>2025-07-11</td>
                         <td>11:00</td>
                         <td><span class="estado pendiente">Pendiente</span></td>
@@ -119,7 +121,6 @@
                             <button class="modificar-btn">Modificar</button>
                         </td>
                     </tr>
-
                     <tr>
                         <td>Sebastian Gomez</td>
                         <td>2025-01-11</td>
@@ -147,296 +148,283 @@
         </section>
     </div>
 
-   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-    
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            background-image: url(Imagenes/gato.jpg); 
+            background-repeat: no-repeat;
+            background-size: cover; 
+            background-position: center center; 
+            background-attachment: fixed; 
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    background-image: url(Imagenes/gato.jpg); 
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center center; 
-    background-attachment: fixed; 
-}
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 470px; 
+        }
 
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 50px auto;
-    background: rgba(255, 255, 255, 0.9); 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-left: 470px; /* Ajusta el margen para evitar que quede debajo de la barra lateral */
-}
+        h1 {
+            font-size: 2.5rem;
+            color: #3a6ead;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
+        .citas {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-h1 {
-    font-size: 2.5rem;
-    color: #3a6ead;
-    font-family: 'Segoe UI', sans-serif;
-}
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
 
+        th {
+            background-color: #3a6ead;
+            color: white;
+            font-weight: bold;
+        }
 
-.citas {
-    margin-top: 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-th, td {
-    padding: 12px;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-
-th {
-    background-color: #3a6ead;
-    color: white;
-    font-weight: bold;
-}
-
-/* Estilos para la barra lateral */
-.sidebar {
+        .sidebar {
             width: 290px;
             height: 100vh;
-            background: linear-gradient(135deg, #55c1df, #3a6ead);    color: white;
+            background: linear-gradient(135deg, #55c1df, #3a6ead);    
+            color: white;
             padding: 20px;
             position: fixed;
             left: 0;
             top: 0;
-          }
-          
-          .sidebar h2 {
+        }
+
+        .sidebar h2 {
             text-align: center;
             margin-top: 0;
-          }
-          
-          .sidebar ul {
+        }
+
+        .sidebar ul {
             list-style-type: none;
             padding: 0;
-          }
-          
-          .sidebar ul li {
+        }
+
+        .sidebar ul li {
             margin: 20px 0;
-          }
-          
-          .sidebar ul li a {
+        }
+
+        .sidebar ul li a {
             color: white;
             text-decoration: none;
             font-size: 18px;
             display: block;
             padding: 10px;
             transition: background-color 0.3s ease;
-          }
-          
-          .sidebar ul li a:hover {
-            background-color: #e4e7eb67;
-          }
+        }
 
-          .logo{
+        .sidebar ul li a:hover {
+            background-color: #e4e7eb67;
+        }
+
+        .logo {
             height: 100px;
             margin-bottom: 20px;
         }
 
-td {
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
-}
-
-
-button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 5px;
-}
-
-.confirmar-btn {
-    background-color: #128f16;
-    color: white;
-}
-
-.rechazar-btn {
-    background-color: #ec2a08;
-    color: white;
-}
-
-.modificar-btn {
-    background-color: #3a6ead;
-    color: white;
-}
-
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-
-.estado {
-    display: inline-block;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.pendiente {
-    background-color: #FFEB3B;
-    color: #333;
-}
-
-.confirmado {
-    background-color: #128f16;
-    color: white;
-}
-
-.rechazado {
-    background-color: #ec2a08;
-    color: white;
-}
-
-</style>
-
-<script>
-    // Función para mostrar notificación con SweetAlert2
-function notificar(mensaje, icono) {
-    Swal.fire({
-        title: mensaje,
-        icon: icono,
-        confirmButtonText: "OK",
-        timer: 2500,
-        showConfirmButton: false,
-        toast: true,
-        position: "top-end"
-    });
-}
-
-// Función para cambiar el estado de la cita a "Confirmado"
-function confirmarCita(event) {
-    const fila = event.target.closest('tr');
-    const estadoCell = fila.querySelector('.estado');
-    estadoCell.textContent = "Confirmado";
-    estadoCell.classList.remove("pendiente");
-    estadoCell.classList.add("confirmado");
-
-    fila.querySelector('.confirmar-btn').disabled = true;
-    fila.querySelector('.rechazar-btn').disabled = true;
-
-    notificar("✅ La cita ha sido confirmada", "success");
-}
-
-// Función para cambiar el estado de la cita a "Rechazado"
-function rechazarCita(event) {
-    const fila = event.target.closest('tr');
-    const estadoCell = fila.querySelector('.estado');
-    estadoCell.textContent = "Rechazado";
-    estadoCell.classList.remove("pendiente");
-    estadoCell.classList.add("rechazado");
-
-    fila.querySelector('.confirmar-btn').disabled = true;
-    fila.querySelector('.rechazar-btn').disabled = true;
-
-    notificar("❌ La cita ha sido rechazada", "error");
-}
-
-// Función para modificar la fecha y hora de una cita con SweetAlert2
-function modificarCita(event) {
-    const fila = event.target.closest('tr');
-    const fechaCell = fila.children[1]; // Segunda columna (Fecha)
-    const horaCell = fila.children[2]; // Tercera columna (Hora)
-
-    Swal.fire({
-        title: "📅 Modificar Cita",
-        html: `
-            <label>Nueva Fecha:</label>
-            <input type="date" id="nuevaFecha" class="swal2-input" value="${fechaCell.textContent}">
-            <label>Nueva Hora:</label>
-            <input type="time" id="nuevaHora" class="swal2-input" value="${horaCell.textContent}">
-        `,
-        showCancelButton: true,
-        confirmButtonText: "Guardar Cambios",
-        cancelButtonText: "Cancelar",
-        preConfirm: () => {
-            return {
-                nuevaFecha: document.getElementById("nuevaFecha").value,
-                nuevaHora: document.getElementById("nuevaHora").value
-            };
+        td {
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
         }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            if (result.value.nuevaFecha) fechaCell.textContent = result.value.nuevaFecha;
-            if (result.value.nuevaHora) horaCell.textContent = result.value.nuevaHora;
 
-            notificar(`✏️ Cita modificada:\n📅 ${fechaCell.textContent} - ⏰ ${horaCell.textContent}`, "info");
+        button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
         }
-    });
-}
 
-// Asignar eventos a los botones
-document.querySelectorAll('.confirmar-btn').forEach(btn => btn.addEventListener('click', confirmarCita));
-document.querySelectorAll('.rechazar-btn').forEach(btn => btn.addEventListener('click', rechazarCita));
-document.querySelectorAll('.modificar-btn').forEach(btn => btn.addEventListener('click', modificarCita));
+        .confirmar-btn {
+            background-color: #128f16;
+            color: white;
+        }
 
+        .rechazar-btn {
+            background-color: #ec2a08;
+            color: white;
+        }
 
-// Función para convertir las horas de 24 horas a 12 horas con AM/PM
-function convertirHoraAMPM(hora24) {
-    let [hora, minutos] = hora24.split(':');  // Dividir la hora en hora y minutos
-    hora = parseInt(hora);  // Convertir hora a entero
+        .modificar-btn {
+            background-color: #3a6ead;
+            color: white;
+        }
 
-    let ampm = hora >= 12 ? 'PM' : 'AM';  // Determinar si es AM o PM
-    hora = hora % 12;  // Convertir a formato de 12 horas
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        }
 
-    if (hora === 0) {
-        hora = 12;  // El 0 es equivalente a 12 en formato de 12 horas
-    }
+        .estado {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
 
-    return `${hora}:${minutos} ${ampm}`;  // Devolver la hora en formato 12 horas
-}
+        .pendiente {
+            background-color: #FFEB3B;
+            color: #333;
+        }
 
-// Función para actualizar la tabla con el formato AM/PM
-function actualizarTablaHoras() {
-    const celdasHora = document.querySelectorAll('td:nth-child(3)');  // Selecciona las celdas de hora
+        .confirmado {
+            background-color: #128f16;
+            color: white;
+        }
 
-    celdasHora.forEach(celda => {
-        let hora = celda.textContent;  // Obtén el contenido de la celda (la hora)
-        let horaConvertida = convertirHoraAMPM(hora);  // Convierte la hora a 12 horas con AM/PM
-        celda.textContent = horaConvertida;  // Actualiza la celda con la nueva hora
-    });
-}
+        .rechazado {
+            background-color: #ec2a08;
+            color: white;
+        }
 
-// Ejecutar la función para actualizar la tabla al cargar la página
-document.addEventListener('DOMContentLoaded', actualizarTablaHoras);
+        /* Estilos de la barra de búsqueda */
+        .search-container {
+            position: relative;
+        }
 
-</script>
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+    </style>
+
+    <script>
+        // Función para mostrar notificación con SweetAlert2
+        function notificar(mensaje, icono) {
+            Swal.fire({
+                title: mensaje,
+                icon: icono,
+                confirmButtonText: "OK",
+                timer: 2500,
+                showConfirmButton: false,
+                toast: true,
+                position: "top-end"
+            });
+        }
+
+        // Función para cambiar el estado de la cita a "Confirmado"
+        function confirmarCita(event) {
+            const fila = event.target.closest('tr');
+            const estadoCell = fila.querySelector('.estado');
+            estadoCell.textContent = "Confirmado";
+            estadoCell.classList.remove("pendiente");
+            estadoCell.classList.add("confirmado");
+
+            fila.querySelector('.confirmar-btn').disabled = true;
+            fila.querySelector('.rechazar-btn').disabled = true;
+
+            notificar("✅ La cita ha sido confirmada", "success");
+        }
+
+        // Función para cambiar el estado de la cita a "Rechazado"
+        function rechazarCita(event) {
+            const fila = event.target.closest('tr');
+            const estadoCell = fila.querySelector('.estado');
+            estadoCell.textContent = "Rechazado";
+            estadoCell.classList.remove("pendiente");
+            estadoCell.classList.add("rechazado");
+
+            fila.querySelector('.confirmar-btn').disabled = true;
+            fila.querySelector('.rechazar-btn').disabled = true;
+
+            notificar("❌ La cita ha sido rechazada", "error");
+        }
+
+        // Función para mostrar un cuadro de confirmación antes de modificar la cita
+        function modificarCita(event) {
+            Swal.fire({
+                title: "¿Seguro que deseas modificar esta cita?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Sí, modificar",
+                cancelButtonText: "No, cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    notificar("La cita ha sido modificada", "success");
+                }
+            });
+        }
+
+        // Función de búsqueda
+        function filtrarCitas() {
+            const query = document.getElementById("search-bar").value.toLowerCase();
+            const filas = document.querySelectorAll("#tabla-citas tbody tr");
+
+            filas.forEach(fila => {
+                let textoFila = fila.innerText.toLowerCase(); // Busca en toda la fila
+                if (textoFila.includes(query)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            });
+        }
+
+        // Asignar eventos a los botones de las citas
+        document.querySelectorAll('.confirmar-btn').forEach(btn => {
+            btn.addEventListener('click', confirmarCita);
+        });
+
+        document.querySelectorAll('.rechazar-btn').forEach(btn => {
+            btn.addEventListener('click', rechazarCita);
+        });
+
+        document.querySelectorAll('.modificar-btn').forEach(btn => {
+            btn.addEventListener('click', modificarCita);
+        });
+    </script>
 
 </body>
 </html>
+
