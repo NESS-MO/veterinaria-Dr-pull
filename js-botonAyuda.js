@@ -236,7 +236,7 @@ function createAyudaElements() {
             <img src="Imagenes/gmail.jpg" alt="Email">
             <div class="texto-opcion">
               <h3>Contactar por correo</h3>
-              <p>cotamosanti03@gmail.com</p>
+              <p>veterinariadr.pul@gmail.com</p>
             </div>
           </a>
           
