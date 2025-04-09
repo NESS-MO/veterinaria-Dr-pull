@@ -341,12 +341,12 @@
     </style>
 
     <script>
-
         // Función para convertir la hora de 24 horas a 12 horas (AM/PM)
 function convertirAHora12Horas(hora24) {
     let [hora, minutos] = hora24.split(":");
     let ampm = "AM";
 
+    // Si la hora es mayor o igual a 12, cambiamos a PM
     if (parseInt(hora) >= 12) {
         ampm = "PM";
         if (parseInt(hora) > 12) {
@@ -354,12 +354,12 @@ function convertirAHora12Horas(hora24) {
         }
     }
     
-    // Convertir la hora 0 (medianoche) a 12 AM
+    // Convertimos la hora "0" (medianoche) a "12 AM"
     if (hora === "0") {
         hora = "12";
     }
 
-    // Convertir la hora 12 (mediodía) a 12 PM
+    // Si es la hora "12", la mantenemos como "12 PM"
     if (hora === "12") {
         ampm = "PM";
     }
@@ -367,12 +367,14 @@ function convertirAHora12Horas(hora24) {
     return `${hora}:${minutos} ${ampm}`;
 }
 
-// Aplicar la conversión de la hora al cargar las citas en la tabla
+// Cambiar las horas de la tabla al cargar la página
 document.querySelectorAll('tbody tr').forEach(fila => {
-    let horaCelda = fila.children[2].textContent;
-    fila.children[2].textContent = convertirAHora12Horas(horaCelda); // Actualiza la hora en la celda
+    let horaCelda = fila.children[2].textContent;  // Obtiene la hora
+    fila.children[2].textContent = convertirAHora12Horas(horaCelda); // Actualiza la hora a formato 12 horas
 });
 
+
+        
        // Función para mostrar notificación con SweetAlert2
 function notificar(mensaje, icono) {
     Swal.fire({
