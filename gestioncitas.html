@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Citas - Veterinaria</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Para los íconos -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -40,18 +40,14 @@
             position: fixed;
             left: 0;
             top: 0;
-            transition: all 0.3s ease;
         }
-
-
 
         .sidebar h2 {
             text-align: center;
-            margin-top: 0;
         }
 
         .sidebar ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
         }
 
@@ -74,22 +70,20 @@
 
         .logo {
             height: 100px;
-            margin-bottom: 20px;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 20px;
         }
 
         section {
-            margin-left: 320px; /* Desplazar el panel a la derecha del menú */
-            margin-top: 20px; /* Espacio desde la parte superior */
+            margin-left: 320px;
+            margin-top: 20px;
             padding: 30px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             max-width: 1550px;
             margin-right: auto;
-            backdrop-filter: blur(10px); /* Fondo difuso para el efecto visual */
+            backdrop-filter: blur(10px);
         }
 
         table {
@@ -103,13 +97,12 @@
 
         th, td {
             padding: 12px;
-            border-radius: 10px ;
+            border-radius: 10px;
             border: 1px solid #ddd;
             text-align: center;
         }
 
         th {
-          
             background-color: #3a6ead;
             color: white;
             font-weight: bold;
@@ -158,6 +151,45 @@
             padding: 20px;
         }
 
+        #toggle-filtros {
+            display: block;
+            margin: 0 auto 15px;
+            background-color: #3a6ead;
+        }
+
+        .filtro-campos {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .filtro-campos.mostrar {
+            max-height: 300px;
+            padding: 15px 0;
+            opacity: 1;
+        }
+
+        .filtro-campos input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            min-width: 160px;
+        }
+
+        #btn-limpiar {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        #btn-limpiar:hover {
+            background-color: #e67e22;
+        }
     </style>
 </head>
 <body>
@@ -179,13 +211,24 @@
     <section>
         <h1>Panel de Administración de Citas</h1>
 
+        <button id="toggle-filtros"><i class="fas fa-filter"></i> Mostrar/Ocultar filtros</button>
+
+        <div class="filtro-campos" id="contenedor-filtros">
+            <input type="text" id="filtro-nombre" placeholder="Nombre">
+            <input type="text" id="filtro-mascota" placeholder="Mascota">
+            <input type="text" id="filtro-correo" placeholder="Correo">
+            <input type="text" id="filtro-servicio" placeholder="Servicio">
+            <input type="date" id="filtro-fecha">
+            <button id="btn-limpiar">Limpiar</button>
+        </div>
+
         <div id="loading" style="display: none;">
             <img src="Imagenes/loading.gif" alt="Cargando...">
         </div>
 
         <table id="tabla-citas">
             <thead>
-                
+                <tr>
                     <th>Nombre</th>
                     <th>Correo</th>
                     <th>Teléfono</th>
@@ -194,44 +237,70 @@
                     <th>Hora</th>
                     <th>Servicios</th>
                     <th>Acciones</th>
-                
+                </tr>
             </thead>
-            <tbody>
-                <!-- Las filas de las citas se generarán dinámicamente aquí -->
-            </tbody>
+            <tbody></tbody>
         </table>
-
     </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const loadingElement = document.getElementById('loading');
             const tablaCitas = document.getElementById('tabla-citas').getElementsByTagName('tbody')[0];
+            const toggleBtn = document.getElementById('toggle-filtros');
+            const contenedorFiltros = document.getElementById('contenedor-filtros');
+
+            const filtroNombre = document.getElementById('filtro-nombre');
+            const filtroMascota = document.getElementById('filtro-mascota');
+            const filtroCorreo = document.getElementById('filtro-correo');
+            const filtroServicio = document.getElementById('filtro-servicio');
+            const filtroFecha = document.getElementById('filtro-fecha');
+            const btnLimpiar = document.getElementById('btn-limpiar');
+
             let citas = JSON.parse(localStorage.getItem('citas')) || [];
 
-            function mostrarCitas() {
-                tablaCitas.innerHTML = ''; // limpia la vista
-                citas.forEach((cita, index) => {
-                    const row = tablaCitas.insertRow();
+            toggleBtn.addEventListener('click', () => {
+                contenedorFiltros.classList.toggle('mostrar');
+            });
 
-                    row.innerHTML = `
-                        <td><input type="text" value="${cita.nombre}" data-index="${index}" data-campo="nombre"></td>
-                        <td><input type="email" value="${cita.correo}" data-index="${index}" data-campo="correo"></td>
-                        <td><input type="text" value="${cita.telefono}" data-index="${index}" data-campo="telefono"></td>
-                        <td><input type="text" value="${cita.mascota}" data-index="${index}" data-campo="mascota"></td>
-                        <td><input type="date" value="${cita.fecha}" data-index="${index}" data-campo="fecha"></td>
-                        <td><input type="time" value="${cita.hora}" data-index="${index}" data-campo="hora"></td>
-                        <td><input type="text" value="${cita.servicios.join(', ')}" data-index="${index}" data-campo="servicios"></td>
-                        <td class="actions">
-                            <button class="guardar" data-index="${index}">Guardar</button>
-                            <button class="eliminar" data-index="${index}">Eliminar</button>
-                        </td>
-                    `;
+            function mostrarCitas() {
+                tablaCitas.innerHTML = '';
+                const nombre = filtroNombre.value.toLowerCase();
+                const mascota = filtroMascota.value.toLowerCase();
+                const correo = filtroCorreo.value.toLowerCase();
+                const servicio = filtroServicio.value.toLowerCase();
+                const fecha = filtroFecha.value;
+
+                citas.forEach((cita, index) => {
+                    const coincide =
+                        (!nombre || cita.nombre.toLowerCase().includes(nombre)) &&
+                        (!mascota || cita.mascota.toLowerCase().includes(mascota)) &&
+                        (!correo || cita.correo.toLowerCase().includes(correo)) &&
+                        (!servicio || cita.servicios.join(',').toLowerCase().includes(servicio)) &&
+                        (!fecha || cita.fecha === fecha);
+
+                    if (coincide) {
+                        const row = tablaCitas.insertRow();
+                        row.innerHTML = `
+                            <td><input type="text" value="${cita.nombre}" data-index="${index}" data-campo="nombre"></td>
+                            <td><input type="email" value="${cita.correo}" data-index="${index}" data-campo="correo"></td>
+                            <td><input type="text" value="${cita.telefono}" data-index="${index}" data-campo="telefono"></td>
+                            <td><input type="text" value="${cita.mascota}" data-index="${index}" data-campo="mascota"></td>
+                            <td><input type="date" value="${cita.fecha}" data-index="${index}" data-campo="fecha"></td>
+                            <td><input type="time" value="${cita.hora}" data-index="${index}" data-campo="hora"></td>
+                            <td><input type="text" value="${cita.servicios.join(', ')}" data-index="${index}" data-campo="servicios"></td>
+                            <td class="actions">
+                                <button class="guardar" data-index="${index}">Guardar</button>
+                                <button class="eliminar" data-index="${index}">Eliminar</button>
+                            </td>
+                        `;
+                    }
                 });
-                loadingElement.style.display = 'none'; // Ocultar el spinner después de cargar
+
+                loadingElement.style.display = 'none';
             }
 
-            tablaCitas.addEventListener('click', function(e) {
+            tablaCitas.addEventListener('click', function (e) {
                 const index = e.target.dataset.index;
                 if (e.target.classList.contains('eliminar')) {
                     Swal.fire({
@@ -271,6 +340,20 @@
                         timer: 1500
                     });
                 }
+            });
+
+            filtroNombre.addEventListener('input', mostrarCitas);
+            filtroMascota.addEventListener('input', mostrarCitas);
+            filtroCorreo.addEventListener('input', mostrarCitas);
+            filtroServicio.addEventListener('input', mostrarCitas);
+            filtroFecha.addEventListener('change', mostrarCitas);
+            btnLimpiar.addEventListener('click', () => {
+                filtroNombre.value = '';
+                filtroMascota.value = '';
+                filtroCorreo.value = '';
+                filtroServicio.value = '';
+                filtroFecha.value = '';
+                mostrarCitas();
             });
 
             mostrarCitas();
