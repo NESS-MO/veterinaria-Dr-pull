@@ -44,7 +44,7 @@
     </table>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
   const tabla = document.querySelector('#tabla-citas tbody');
   let citas = JSON.parse(localStorage.getItem('citas')) || [];
 
@@ -66,7 +66,6 @@
         </td>
       `;
       tabla.appendChild(fila);
-
     });
   }
 
