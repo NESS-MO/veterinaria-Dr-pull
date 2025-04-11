@@ -6,259 +6,275 @@
     <title>Gestión de Citas - Veterinaria</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Para los íconos -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            background-image: url(Imagenes/gato.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #3a6ead;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        .sidebar {
+            width: 290px;
+            height: 100vh;
+            background: linear-gradient(135deg, #55c1df, #3a6ead);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            transition: all 0.3s ease;
+        }
+
+
+
+        .sidebar h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #e4e7eb67;
+        }
+
+        .logo {
+            height: 100px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            margin-left: 320px; /* Desplazar el panel a la derecha del menú */
+            margin-top: 20px; /* Espacio desde la parte superior */
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1550px;
+            margin-right: auto;
+            backdrop-filter: blur(10px); /* Fondo difuso para el efecto visual */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border-radius: 10px ;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+          
+            background-color: #3a6ead;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .guardar {
+            background-color: #27ae60;
+        }
+
+        .guardar:hover {
+            background-color: #2ecc71;
+        }
+
+        .eliminar {
+            background-color: #e74c3c;
+        }
+
+        .eliminar:hover {
+            background-color: #c0392b;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        #loading {
+            text-align: center;
+            padding: 20px;
+        }
+
+    </style>
 </head>
 <body>
-    
+
     <div class="sidebar">
         <img class="logo" src="Imagenes/logo2.png" alt="">
         <h2>Menú</h2>
         <ul>
-          <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
-          <li><a href="#">Registro Citas</a></li>
-          <li><a href="#">Registro Clientes</a></li>
-          <li><a href="5. Modificar-tipdelasemana.html">Modificar Información <br>¡TIP DE LA SEMANA!</a></li>
-          <li><a href="5. modificar-galeria.html">Modificar fotos "Nuestro trabajo"</a></li>
-          <li><a href="modificarservicios.html">Modificar Servicios</a></li>
-          <li><a href="1. Index.html">Cerrar sesión</a></li>
+            <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
+            <li><a href="#">Registro Citas</a></li>
+            <li><a href="#">Registro Clientes</a></li>
+            <li><a href="5. Modificar-tipdelasemana.html">Modificar Información <br>¡TIP DE LA SEMANA!</a></li>
+            <li><a href="5. modificar-galeria.html">Modificar fotos "Nuestro trabajo"</a></li>
+            <li><a href="modificarservicios.html">Modificar Servicios</a></li>
+            <li><a href="1. Index.html">Cerrar sesión</a></li>
         </ul>
     </div>
-    <h1>Panel de Administración de Citas</h1>
-   
 
-    <table id="tabla-citas">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Correo</th>
-          <th>Teléfono</th>
-          <th>Mascota</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Servicios</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Aquí se llenarán las citas con JS -->
-      </tbody>
-    </table>
+    <section>
+        <h1>Panel de Administración de Citas</h1>
+
+        <div id="loading" style="display: none;">
+            <img src="Imagenes/loading.gif" alt="Cargando...">
+        </div>
+
+        <table id="tabla-citas">
+            <thead>
+                
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Mascota</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Servicios</th>
+                    <th>Acciones</th>
+                
+            </thead>
+            <tbody>
+                <!-- Las filas de las citas se generarán dinámicamente aquí -->
+            </tbody>
+        </table>
+
+    </section>
 
     <script>
-   document.addEventListener('DOMContentLoaded', () => {
-  const tabla = document.querySelector('#tabla-citas tbody');
-  let citas = JSON.parse(localStorage.getItem('citas')) || [];
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingElement = document.getElementById('loading');
+            const tablaCitas = document.getElementById('tabla-citas').getElementsByTagName('tbody')[0];
+            let citas = JSON.parse(localStorage.getItem('citas')) || [];
 
-  function mostrarCitas() {
-    tabla.innerHTML = ''; // limpia la tabla
-    citas.forEach((cita, index) => {
-      const fila = document.createElement('tr');
-      fila.innerHTML = `
-        <td><input value="${cita.nombre}" data-index="${index}" data-campo="nombre"></td>
-        <td><input value="${cita.correo}" data-index="${index}" data-campo="correo"></td>
-        <td><input value="${cita.telefono}" data-index="${index}" data-campo="telefono"></td>
-        <td><input value="${cita.mascota}" data-index="${index}" data-campo="mascota"></td>
-        <td><input type="date" value="${cita.fecha}" data-index="${index}" data-campo="fecha"></td>
-        <td><input type="time" value="${cita.hora}" data-index="${index}" data-campo="hora"></td>
-        <td><input value="${cita.servicios.join(', ')}" data-index="${index}" data-campo="servicios"></td>
-        <td>
-          <button class="guardar" data-index="${index}">Guardar</button>
-          <button class="eliminar" data-index="${index}">Eliminar</button>
-        </td>
-      `;
-      tabla.appendChild(fila);
-    });
-  }
+            function mostrarCitas() {
+                tablaCitas.innerHTML = ''; // limpia la vista
+                citas.forEach((cita, index) => {
+                    const row = tablaCitas.insertRow();
 
-  tabla.addEventListener('click', function(e) {
-    const index = e.target.dataset.index;
-    if (e.target.classList.contains('eliminar')) {
-      if (confirm('¿Seguro que deseas eliminar esta cita?')) {
-        citas.splice(index, 1);
-        localStorage.setItem('citas', JSON.stringify(citas));
-        mostrarCitas();
-      }
-    } else if (e.target.classList.contains('guardar')) {
-      const inputs = tabla.querySelectorAll(`input[data-index="${index}"]`);
-      let citaActualizada = {};
-      inputs.forEach(input => {
-        if (input.dataset.campo === 'servicios') {
-          citaActualizada[input.dataset.campo] = input.value.split(',').map(s => s.trim());
-        } else {
-          citaActualizada[input.dataset.campo] = input.value;
-        }
-      });
-      citas[index] = citaActualizada;
-      localStorage.setItem('citas', JSON.stringify(citas));
-      alert('Cita actualizada correctamente');
-    }
-  });
+                    row.innerHTML = `
+                        <td><input type="text" value="${cita.nombre}" data-index="${index}" data-campo="nombre"></td>
+                        <td><input type="email" value="${cita.correo}" data-index="${index}" data-campo="correo"></td>
+                        <td><input type="text" value="${cita.telefono}" data-index="${index}" data-campo="telefono"></td>
+                        <td><input type="text" value="${cita.mascota}" data-index="${index}" data-campo="mascota"></td>
+                        <td><input type="date" value="${cita.fecha}" data-index="${index}" data-campo="fecha"></td>
+                        <td><input type="time" value="${cita.hora}" data-index="${index}" data-campo="hora"></td>
+                        <td><input type="text" value="${cita.servicios.join(', ')}" data-index="${index}" data-campo="servicios"></td>
+                        <td class="actions">
+                            <button class="guardar" data-index="${index}">Guardar</button>
+                            <button class="eliminar" data-index="${index}">Eliminar</button>
+                        </td>
+                    `;
+                });
+                loadingElement.style.display = 'none'; // Ocultar el spinner después de cargar
+            }
 
-  mostrarCitas();
-});
+            tablaCitas.addEventListener('click', function(e) {
+                const index = e.target.dataset.index;
+                if (e.target.classList.contains('eliminar')) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '¿Seguro que deseas eliminar esta cita?',
+                        showConfirmButton: true,
+                        showCancelButton: true
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            citas.splice(index, 1);
+                            localStorage.setItem('citas', JSON.stringify(citas));
+                            mostrarCitas();
+                            Swal.fire({
+                                icon: 'warning',
+                                title: '¡Cita eliminada!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    });
+                } else if (e.target.classList.contains('guardar')) {
+                    const inputs = tablaCitas.querySelectorAll(`input[data-index="${index}"]`);
+                    let citaActualizada = {};
+                    inputs.forEach(input => {
+                        if (input.dataset.campo === 'servicios') {
+                            citaActualizada[input.dataset.campo] = input.value.split(',').map(s => s.trim());
+                        } else {
+                            citaActualizada[input.dataset.campo] = input.value;
+                        }
+                    });
+                    citas[index] = citaActualizada;
+                    localStorage.setItem('citas', JSON.stringify(citas));
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Cita actualizada correctamente!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+
+            mostrarCitas();
+        });
     </script>
-  
-  <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-  
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        background-image: url(Imagenes/gato.jpg); 
-        background-repeat: no-repeat;
-        background-size: cover; 
-        background-position: center center; 
-        background-attachment: fixed; 
-    }
-  
-    h1 {
-        font-size: 2.5rem;
-        color: #3a6ead;
-        font-family: 'Segoe UI', sans-serif;
-        text-align: center;
-        margin: 40px 0 20px;
-    }
-  
-    .sidebar {
-        width: 290px;
-        height: 100vh;
-        background: linear-gradient(135deg, #55c1df, #3a6ead);    
-        color: white;
-        padding: 20px;
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
-  
-    .sidebar h2 {
-        text-align: center;
-        margin-top: 0;
-    }
-  
-    .sidebar ul {
-        list-style-type: none;
-        padding: 0;
-    }
-  
-    .sidebar ul li {
-        margin: 20px 0;
-    }
-  
-    .sidebar ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        display: block;
-        padding: 10px;
-        transition: background-color 0.3s ease;
-    }
-  
-    .sidebar ul li a:hover {
-        background-color: #e4e7eb67;
-    }
-  
-    .logo {
-        height: 100px;
-        margin-bottom: 20px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-  
-    table {
-        width: calc(100% - 320px);
-        margin-left: 310px;
-        border-collapse: collapse;
-        border-radius: 8px;
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-  
-    th, td {
-        padding: 12px;
-        text-align: center;
-        font-size: 1rem;
-    }
-  
-    th {
-        background-color: #3a6ead;
-        color: white;
-        font-weight: bold;
-    }
-  
-    td {
-        background-color: #f9f9f9;
-        border-bottom: 1px solid #ddd;
-    }
-  
-    input[type="text"],
-    input[type="email"],
-    input[type="date"],
-    input[type="time"] {
-        width: 100%;
-        padding: 8px 10px;
-        font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        text-align: center;
-    }
-  
-    input:focus {
-        border-color: #2980b9;
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
-    }
-  
-    button {
-        padding: 8px 12px;
-        font-size: 0.95rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: white;
-        font-weight: bold;
-        margin: 2px;
-    }
-  
-    .guardar {
-        background-color: #27ae60;
-    }
-  
-    .guardar:hover {
-        background-color: #2ecc71;
-    }
-  
-    .eliminar {
-        background-color: #e74c3c;
-    }
-  
-    .eliminar:hover {
-        background-color: #c0392b;
-    }
-  
-    @media (max-width: 992px) {
-        table {
-            width: 100%;
-            margin-left: 0;
-        }
-  
-        .sidebar {
-            width: 100%;
-            height: auto;
-            position: relative;
-        }
-  
-        h1 {
-            margin-top: 20px;
-        }
-    }
-  </style>
-  
-   
 </body>
 </html>
