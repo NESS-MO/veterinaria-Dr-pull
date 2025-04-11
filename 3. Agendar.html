@@ -45,7 +45,7 @@
             <p>Complete el formulario para agendar una cita con nuestros veterinarios.</p>
             <form action="#" method="POST" id="appointment-form">
                 <div class="form-group">
-                    <label for="nombre">Nombre Completo</label>
+                    <label for="nombre">Nombre Completo (Dueño) </label>
                     <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre completo">
                 </div>
                 <div class="form-group">
@@ -186,6 +186,7 @@
                         localStorage.setItem('citas', JSON.stringify(citas));
                         info.event.remove();
                     }
+                    
                 },
                 eventTimeFormat: { 
                     hour: '2-digit',
@@ -249,6 +250,18 @@
                 document.getElementById('appointment-form').reset();
             });
         });
+        document.addEventListener('DOMContentLoaded', function () {
+        // Obtener el parámetro "servicio" de la URL
+        const params = new URLSearchParams(window.location.search);
+        const servicio = params.get('servicio');
+
+        if (servicio) {
+            const checkbox = document.querySelector(`input[name="services"][value="${servicio}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        }
+    });
     </script>
 
     <script src="MenuHamburguesa.js"></script>
