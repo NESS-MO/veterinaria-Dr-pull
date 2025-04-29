@@ -138,7 +138,7 @@ nav a:hover {
 
 
 .agendar-submit {
-    background-color:   #2393b2;
+    background-color:   #1e40af;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -213,7 +213,7 @@ nav a:hover {
 .conocenos h2 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #2393b2;
+    color: #1e40af;
 }
 
 .conocenos2 {
@@ -305,7 +305,7 @@ nav a:hover {
 .f-mapa h2 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #2393b2;
+    color: #1e40af;
 }
 
 .mapa {
@@ -452,7 +452,7 @@ footer {
         right: -100%; /* Ocultar el menú fuera de la pantalla */
         width: 70%;
         height: 100vh;
-        background: linear-gradient(135deg, #4fa8c1, #3a6ead);
+     background: linear-gradient(135deg, #4fa8c1, #3a6ead);
         flex-direction: column;
         justify-content: center;
         align-items: center;
