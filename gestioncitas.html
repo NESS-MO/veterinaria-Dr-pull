@@ -25,7 +25,7 @@
 
         h1 {
             font-size: 2.5rem;
-            color: #3a6ead;
+            color: #2563eb;
             font-family: 'Segoe UI', sans-serif;
             text-align: center;
             margin: 40px 0 20px;
@@ -34,7 +34,7 @@
         .sidebar {
             width: 290px;
             height: 100vh;
-            background: linear-gradient(135deg, #22d3ee,#1e40af);
+            background: linear-gradient(135deg, #22d3ee, #1e40af);
             color: white;
             padding: 20px;
             position: fixed;
@@ -103,7 +103,7 @@
         }
 
         th {
-            background-color: #3a6ead;
+            background-color: #2563eb;
             color: white;
             font-weight: bold;
             text-transform: uppercase;
@@ -151,45 +151,113 @@
             padding: 20px;
         }
 
-        #toggle-filtros {
-            display: block;
-            margin: 0 auto 15px;
-            background-color: #3a6ead;
-        }
+    
+    /* .. Todo el resto del CSS original ... */
 
-        .filtro-campos {
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            padding: 0;
-        }
+    #toggle-filtros {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #3b82f6, #06b6d4);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s, transform 0.3s;
+        margin: 0 auto 20px;
+        max-width: 200px;
+        justify-content: center;
+    }
 
-        .filtro-campos.mostrar {
-            max-height: 300px;
-            padding: 15px 0;
-            opacity: 1;
-        }
+    #toggle-filtros:hover {
+        background: linear-gradient(135deg, #2563eb, #0891b2);
+        transform: scale(1.03);
+    }
 
-        .filtro-campos input {
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            min-width: 160px;
-        }
+    .filtro-campos {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
 
-        #btn-limpiar {
-            background-color: #f39c12;
-            color: white;
-        }
+    .filtro-campos.mostrar {
+        max-height: 1000px;
+        opacity: 1;
+    }
 
-        #btn-limpiar:hover {
-            background-color: #e67e22;
-        }
+    .filtro-campos .campo {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filtro-campos label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #1e40af;
+        font-size: 14px;
+    }
+
+    .filtro-campos input {
+        padding: 10px 14px 10px 40px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        font-size: 15px;
+        background-color: #f9f9f9;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.3s;
+    }
+
+    .filtro-campos input:focus {
+        border-color: #3b82f6;
+        outline: none;
+        background-color: #fff;
+    }
+
+    .filtro-campos .campo::before {
+        content: "🔍";
+        position: absolute;
+        top: 35px;
+        left: 12px;
+        font-size: 14px;
+        opacity: 0.6;
+    }
+
+    #filtro-fecha::before,
+    #filtro-hora::before {
+        content: none;
+    }
+
+    #btn-limpiar {
+        background: linear-gradient(135deg, #2563eb, #0891b2);
+        color: white;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 24px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        align-self: flex-end;
+    }
+
+    #btn-limpiar:hover {
+        background-color: #d97706;
+    }
+
+
     </style>
 </head>
 <body>
@@ -210,15 +278,43 @@
     <section>
         <h1>Panel de Administración de Citas</h1>
 
-        <button id="toggle-filtros"><i class="fas fa-filter"></i> Mostrar/Ocultar filtros</button>
+        <button id="toggle-filtros">
+            <i class="fas fa-sliders-h"></i>
+            <span>Filtros</span>
+        </button>
 
         <div class="filtro-campos" id="contenedor-filtros">
-            <input type="text" id="filtro-nombre" placeholder="Nombre">
-            <input type="text" id="filtro-mascota" placeholder="Mascota">
-            <input type="text" id="filtro-correo" placeholder="Correo">
-            <input type="text" id="filtro-servicio" placeholder="Servicio">
-            <input type="date" id="filtro-fecha">
-            <button id="btn-limpiar">Limpiar</button>
+            <div class="campo">
+                <label for="filtro-nombre">Nombre</label>
+                <input type="text" id="filtro-nombre" placeholder="Nombre">
+            </div>
+            <div class="campo">
+                <label for="filtro-correo">Correo</label>
+                <input type="text" id="filtro-correo" placeholder="Correo">
+            </div>
+            <div class="campo">
+                <label for="filtro-telefono">Teléfono</label>
+                <input type="text" id="filtro-telefono" placeholder="Teléfono">
+            </div>
+            <div class="campo">
+                <label for="filtro-mascota">Mascota</label>
+                <input type="text" id="filtro-mascota" placeholder="Mascota">
+            </div>
+            <div class="campo">
+                <label for="filtro-fecha">Fecha</label>
+                <input type="date" id="filtro-fecha">
+            </div>
+            <div class="campo">
+                <label for="filtro-hora">Hora</label>
+                <input type="time" id="filtro-hora">
+            </div>
+            <div class="campo">
+                <label for="filtro-servicio">Servicios</label>
+                <input type="text" id="filtro-servicio" placeholder="Servicios">
+            </div>
+            <div class="campo">
+                <button id="btn-limpiar">Limpiar</button>
+            </div>
         </div>
 
         <div id="loading" style="display: none;">
@@ -250,10 +346,12 @@
             const contenedorFiltros = document.getElementById('contenedor-filtros');
 
             const filtroNombre = document.getElementById('filtro-nombre');
-            const filtroMascota = document.getElementById('filtro-mascota');
             const filtroCorreo = document.getElementById('filtro-correo');
-            const filtroServicio = document.getElementById('filtro-servicio');
+            const filtroTelefono = document.getElementById('filtro-telefono');
+            const filtroMascota = document.getElementById('filtro-mascota');
             const filtroFecha = document.getElementById('filtro-fecha');
+            const filtroHora = document.getElementById('filtro-hora');
+            const filtroServicio = document.getElementById('filtro-servicio');
             const btnLimpiar = document.getElementById('btn-limpiar');
 
             let citas = JSON.parse(localStorage.getItem('citas')) || [];
@@ -265,18 +363,22 @@
             function mostrarCitas() {
                 tablaCitas.innerHTML = '';
                 const nombre = filtroNombre.value.toLowerCase();
-                const mascota = filtroMascota.value.toLowerCase();
                 const correo = filtroCorreo.value.toLowerCase();
-                const servicio = filtroServicio.value.toLowerCase();
+                const telefono = filtroTelefono.value.toLowerCase();
+                const mascota = filtroMascota.value.toLowerCase();
                 const fecha = filtroFecha.value;
+                const hora = filtroHora.value;
+                const servicio = filtroServicio.value.toLowerCase();
 
                 citas.forEach((cita, index) => {
                     const coincide =
                         (!nombre || cita.nombre.toLowerCase().includes(nombre)) &&
-                        (!mascota || cita.mascota.toLowerCase().includes(mascota)) &&
                         (!correo || cita.correo.toLowerCase().includes(correo)) &&
-                        (!servicio || cita.servicios.join(',').toLowerCase().includes(servicio)) &&
-                        (!fecha || cita.fecha === fecha);
+                        (!telefono || cita.telefono.toLowerCase().includes(telefono)) &&
+                        (!mascota || cita.mascota.toLowerCase().includes(mascota)) &&
+                        (!fecha || cita.fecha === fecha) &&
+                        (!hora || cita.hora === hora) &&
+                        (!servicio || cita.servicios.join(',').toLowerCase().includes(servicio));
 
                     if (coincide) {
                         const row = tablaCitas.insertRow();
@@ -342,16 +444,21 @@
             });
 
             filtroNombre.addEventListener('input', mostrarCitas);
-            filtroMascota.addEventListener('input', mostrarCitas);
             filtroCorreo.addEventListener('input', mostrarCitas);
-            filtroServicio.addEventListener('input', mostrarCitas);
+            filtroTelefono.addEventListener('input', mostrarCitas);
+            filtroMascota.addEventListener('input', mostrarCitas);
             filtroFecha.addEventListener('change', mostrarCitas);
+            filtroHora.addEventListener('input', mostrarCitas);
+            filtroServicio.addEventListener('input', mostrarCitas);
+
             btnLimpiar.addEventListener('click', () => {
                 filtroNombre.value = '';
-                filtroMascota.value = '';
                 filtroCorreo.value = '';
-                filtroServicio.value = '';
+                filtroTelefono.value = '';
+                filtroMascota.value = '';
                 filtroFecha.value = '';
+                filtroHora.value = '';
+                filtroServicio.value = '';
                 mostrarCitas();
             });
 
@@ -360,4 +467,5 @@
     </script>
 </body>
 </html>
- 
+
+</html>
