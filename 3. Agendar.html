@@ -78,7 +78,6 @@
                 </div>
                 <div class="form-group">
                     <label for="services">Motivo de la Cita:</label>
-                    <p></p>
                     <div class="checkbox-group">
                         <label>Consulta <input type="checkbox" name="services" value="consulta"></label>
                         <label>Esterilización <input type="checkbox" name="services" value="esterilizacion"></label>
@@ -148,118 +147,121 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/es.min.js'></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendario');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'es',
-                events: function (fetchInfo, successCallback, failureCallback) {
-                    var citas = JSON.parse(localStorage.getItem('citas')) || [];
-                    var events = citas.map(function (cita, index) {
-                        return {
-                            title: `Cita: ${cita.mascota}`,
-                            start: `${cita.fecha}T${cita.hora}`,
-                            description: `Servicios: ${cita.servicios.join(', ')}`,
-                            extendedProps: {
-                                citaIndex: index  
-                            }
-                        };
-                    });
-                    successCallback(events);
-                },
-                dateClick: function (info) {
-                    var fechaSeleccionada = info.dateStr;
-                    document.getElementById('fecha').value = fechaSeleccionada;
-
-                    window.scrollTo({
-                        top: document.getElementById('formulario').offsetTop,
-                        behavior: 'smooth'
-                    });
-                },
-                eventClick: function (info) {
-                    if (confirm(`¿Deseas cancelar la cita para ${info.event.title}?`)) {
-                        var citas = JSON.parse(localStorage.getItem('citas')) || [];
-                        var citaIndex = info.event.extendedProps.citaIndex;
-                        citas.splice(citaIndex, 1);
-                        localStorage.setItem('citas', JSON.stringify(citas));
-                        info.event.remove();
+      document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendario');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'es',
+        events: function (fetchInfo, successCallback, failureCallback) {
+            var citas = JSON.parse(localStorage.getItem('citas')) || [];
+            var events = citas.map(function (cita, index) {
+                return {
+                    title: `Cita: ${cita.mascota}`,
+                    start: `${cita.fecha}T${cita.hora}`,
+                    description: `Servicios: ${cita.servicios.join(', ')}`,
+                    extendedProps: {
+                        citaIndex: index
                     }
-                    
-                },
-                eventTimeFormat: { 
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    meridiem: 'short'
-                }
-            });
-
-            calendar.render();
-
-            document.getElementById('appointment-form').addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                var nombre = document.getElementById('nombre').value;
-                var correo = document.getElementById('correo').value;
-                var telefono = document.getElementById('telefono').value;
-                var mascota = document.getElementById('mascota').value;
-                var fecha = document.getElementById('fecha').value;
-                var hora = document.getElementById('hora').value;
-                var services = [];
-                const serviceCheckboxes = document.querySelectorAll('input[name="services"]:checked');
-
-                serviceCheckboxes.forEach(function (checkbox) {
-                    services.push(checkbox.value);
-                });
-
-                if (!fecha || !hora || services.length === 0) {
-                    alert('Por favor, selecciona la fecha, la hora y al menos un servicio.');
-                    return;
-                }
-
-                var citas = JSON.parse(localStorage.getItem('citas')) || [];
-                var existeCita = citas.some(function (cita) {
-                    return cita.fecha === fecha && cita.hora === hora;
-                });
-
-                if (existeCita) {
-                    alert('¡Esta hora ya está ocupada! Por favor, selecciona otra hora.');
-                    return;
-                }
-
-                var nuevaCita = {
-                    nombre: nombre,
-                    correo: correo,
-                    telefono: telefono,
-                    mascota: mascota,
-                    fecha: fecha,
-                    hora: hora,
-                    servicios: services
                 };
-
-                citas.push(nuevaCita);
-                localStorage.setItem('citas', JSON.stringify(citas));
-
-                calendar.addEvent({
-                    title: `Cita: ${mascota}`,
-                    start: `${fecha}T${hora}`,
-                    description: `Servicios: ${services.join(', ')}`
-                });
-
-                document.getElementById('appointment-form').reset();
             });
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-        // Obtener el parámetro "servicio" de la URL
-        const params = new URLSearchParams(window.location.search);
-        const servicio = params.get('servicio');
+            successCallback(events);
+        },
+        dateClick: function (info) {
+            var fechaSeleccionada = info.dateStr;
+            document.getElementById('fecha').value = fechaSeleccionada;
 
-        if (servicio) {
-            const checkbox = document.querySelector(`input[name="services"][value="${servicio}"]`);
-            if (checkbox) {
-                checkbox.checked = true;
+            window.scrollTo({
+                top: document.getElementById('formulario').offsetTop,
+                behavior: 'smooth'
+            });
+        },
+        eventClick: function (info) {
+            if (confirm(`¿Deseas cancelar la cita para ${info.event.title}?`)) {
+                var citas = JSON.parse(localStorage.getItem('citas')) || [];
+                var citaIndex = info.event.extendedProps.citaIndex;
+                citas.splice(citaIndex, 1);
+                localStorage.setItem('citas', JSON.stringify(citas));
+                info.event.remove();
             }
+
+        },
+        eventTimeFormat: {
+            hour: '2-digit',
+            minute: '2-digit',
+            meridiem: 'short'
         }
     });
+
+    calendar.render();
+
+    document.getElementById('appointment-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var nombre = document.getElementById('nombre').value;
+        var correo = document.getElementById('correo').value;
+        var telefono = document.getElementById('telefono').value;
+        var mascota = document.getElementById('mascota').value;
+        var fecha = document.getElementById('fecha').value;
+        var hora = document.getElementById('hora').value;
+        var services = [];
+        const serviceCheckboxes = document.querySelectorAll('input[name="services"]:checked');
+
+        serviceCheckboxes.forEach(function (checkbox) {
+            services.push(checkbox.value);
+        });
+
+        if (!fecha || !hora || services.length === 0) {
+            alert('Por favor llena los campos de la fecha, hora o un motivo de cita.');
+            return;
+        }
+
+        var citas = JSON.parse(localStorage.getItem('citas')) || [];
+        var existeCita = citas.some(function (cita) {
+            return cita.fecha === fecha && cita.hora === hora;
+        });
+
+        if (existeCita) {
+            alert('¡Esta hora ya está ocupada! Por favor, selecciona otra hora.');
+            return;
+        }
+
+        var nuevaCita = {
+            nombre: nombre,
+            correo: correo,
+            telefono: telefono,
+            mascota: mascota,
+            fecha: fecha,
+            hora: hora,
+            servicios: services
+        };
+
+        citas.push(nuevaCita);
+        localStorage.setItem('citas', JSON.stringify(citas));
+
+        calendar.addEvent({
+            title: `Cita: ${mascota}`,
+            start: `${fecha}T${hora}`,
+            description: `Servicios: ${services.join(', ')}`
+        });
+
+        document.getElementById('appointment-form').reset();
+        alert('✅ ¡Tu cita ha sido guardada exitosamente!');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener el parámetro "servicio" de la URL
+    const params = new URLSearchParams(window.location.search);
+    const servicio = params.get('servicio');
+
+    if (servicio) {
+        const checkbox = document.querySelector(`input[name="services"][value="${servicio}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    }
+});
+
     </script>
 
     <script src="MenuHamburguesa.js"></script>
