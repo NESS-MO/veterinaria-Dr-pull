@@ -14,7 +14,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #4fa8c1, #3a6ead);
+    background: linear-gradient(135deg, #22d3ee, #1e40af);
+    ;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
@@ -115,7 +116,7 @@ nav a:hover {
 }
 
 .agendar {
-    background-color: #2393b2;
+    background-color: #1e40af;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -126,12 +127,12 @@ nav a:hover {
 
 .agendar:hover {
     transform: scale(1.05);
-    background-color: #0056b3;
+    background-color: #1e40af;
 }
 
 .dispo {
     text-decoration: underline;
-    color: #0072ff;
+    color: #1e40af;
 }
 
 
@@ -148,7 +149,7 @@ nav a:hover {
 
 .agendar-submit:hover {
     transform: scale(1.05);
-    background-color: #0056b3;
+    background-color: #1e40af;
 }
 
 .equipo {
@@ -162,7 +163,7 @@ nav a:hover {
 .equipo h2 {
     font-size: 28px;
     margin-bottom: 40px;
-    color: #2393b2;
+    color: #1e40af;
 }
 
 .miembros {
@@ -188,7 +189,7 @@ nav a:hover {
 .miembro h3 {
     font-size: 20px;
     margin: 15px 0;
-    color: #2393b2;
+    color: #1e40af;
 }
 
 .miembro p {
@@ -205,7 +206,7 @@ nav a:hover {
 .conocenos h1 {
     font-size: 32px;
     margin-bottom: 50px;
-    color: #3a6ead;
+    color: #1e40af;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.281);
 }
 
@@ -316,7 +317,7 @@ nav a:hover {
 }
 
 footer {
-    background: linear-gradient(135deg, #4fa8c1, #3a6ead);
+    background: linear-gradient(135deg, #22d3ee, #1e40af);
     color: #fff;
     padding: 40px 20px 20px;
     font-family: 'Open Sans', sans-serif;
