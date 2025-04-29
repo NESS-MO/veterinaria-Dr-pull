@@ -28,7 +28,7 @@ function createWhatsAppButton() {
         visibility: hidden;
         width: 0;
         opacity: 0;
-        background: linear-gradient(135deg, #4fa8c1, #3a6ead);
+        background: linear-gradient(135deg, #2563eb, #0891b2);
         color: #fff;
         text-align: center;
         border-radius: 6px;

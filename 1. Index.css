@@ -252,7 +252,7 @@ nav a:hover {
 .nuestro-trabajo h2 {
     font-size: 32px;
     margin-bottom: 20px;
-    color: #2393b2;
+    color: #1e40af;
     font-weight: bold;
 }
 
@@ -452,7 +452,7 @@ footer {
         right: -100%; /* Ocultar el menú fuera de la pantalla */
         width: 70%;
         height: 100vh;
-     background: linear-gradient(135deg, #4fa8c1, #3a6ead);
+        background: linear-gradient(135deg, #2563eb, #0891b2);
         flex-direction: column;
         justify-content: center;
         align-items: center;

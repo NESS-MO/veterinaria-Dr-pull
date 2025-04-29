@@ -26,7 +26,7 @@ function addAyudaStyles() {
       visibility: hidden;
       width: 0;
       opacity: 0;
-      background: linear-gradient(135deg, #4fa8c1, #3a6ead);
+      background: linear-gradient(135deg, #2563eb, #0891b2);
       color: #fff;
       text-align: center;
       border-radius: 6px;
@@ -100,7 +100,7 @@ function addAyudaStyles() {
     }
 
     .cabecera-ayuda {
-      background: linear-gradient(135deg, #55c1df, #3a6ead);
+      background: linear-gradient(135deg, #2563eb, #0891b2);
       color: white;
       padding: 15px 20px;
       display: flex;
@@ -169,7 +169,7 @@ function addAyudaStyles() {
     .texto-opcion h3 {
       margin: 0 0 5px 0;
       font-size: 1rem;
-      color: #3a6ead;
+      color: #2563eb;
     }
 
     .texto-opcion p {
