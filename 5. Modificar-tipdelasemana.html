@@ -15,6 +15,37 @@
       background-attachment: fixed;
       display: flex;
     }
+    
+
+    .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .sidebar ul {
+                display: flex;
+                flex-direction: column;
+            }
+            .sidebar ul li {
+                margin: 10px 0;
+            }
+            body {
+                margin-left: 0;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
 
     .logo {
       height: 80px;
@@ -23,46 +54,41 @@
     }
 
     .sidebar {
-      width: 260px;
-      background: linear-gradient(135deg, #55c1df, #3a6ead);    
-      color: #fff;
-      padding: 20px;
-      min-height: 100vh;
-      box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
-      position: fixed;
-    }
+            width: 290px;
+            height: 100vh;
+            background: linear-gradient(135deg, #22d3ee,#1e40af);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
 
-    .sidebar h2 {
-      font-size: 22px;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-    }
+        .sidebar h2 {
+            text-align: center;
+        }
 
-    .sidebar ul {
-      padding: 0;
-      list-style: none;
-    }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    .sidebar ul li {
-      margin: 15px 0;
-    }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
 
-    .sidebar ul li a {
-      color: #ecf0f1;
-      text-decoration: none;
-      font-weight: 500;
-      display: block;
-      padding: 10px 15px;
-      border-radius: 8px;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
 
-    .sidebar ul li a:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateX(5px);
-    }
+        .sidebar ul li a:hover {
+            background-color: #e4e7eb67;
+        }
 
     .main-content {
       margin-left: 280px;
@@ -185,24 +211,6 @@
       background-color: #c0392b;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
       transform: translateY(-2px);
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        position: relative;
-        width: 100%;
-        min-height: auto;
-        box-shadow: none;
-      }
-      .main-content {
-        margin-left: 0;
-        padding: 30px 20px;
-        width: 100%;
-      }
-      .sects div {
-        width: 100%;
-        margin-top: 20px;
-      }
     }
   </style>
 </head>
