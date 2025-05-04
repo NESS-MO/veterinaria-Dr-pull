@@ -14,7 +14,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #22d3ee, #1e40af);
+    background: linear-gradient(135deg, #5fbac8, #3f6ead);
     ;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -317,7 +317,7 @@ nav a:hover {
 }
 
 footer {
-    background: linear-gradient(135deg, #22d3ee, #1e40af);
+    background: linear-gradient(135deg, #5fbac8, #3f6ead);
     color: #fff;
     padding: 40px 20px 20px;
     font-family: 'Open Sans', sans-serif;

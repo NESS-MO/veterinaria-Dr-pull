@@ -13,7 +13,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Asegura que los elementos estén alineados verticalmente */
-    background: linear-gradient(135deg, #22d3ee, #1e40af);
+    background: linear-gradient(135deg, #5fbac8, #3f6ead);
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -78,7 +78,7 @@ nav a:hover {
 
 .agendar {
     display: inline-block;
-    background-color: #1e40af;
+    background-color: #3f6ead;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -107,7 +107,7 @@ label {
     margin-right: 10px;
     margin-bottom: 10px;
     text-decoration: none;
-    color: #1e40af;
+    color: #3f6ead;
 }
 
 .formulario {
@@ -122,12 +122,12 @@ label {
 
 .formulario h2 {
     font-size: 28px;
-    color: #1e40af;
+    color: #3f6ead;
     margin-bottom: 20px;
 }
 
 .formulario h3{
-    color: #1e40af;
+    color: #3f6ead;
 }
 
 .formulario a {
@@ -167,7 +167,7 @@ label {
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #1e40af;
+    border-color: #3f6ead;
 }
 .checkbox-group {
     display: grid;
@@ -199,7 +199,7 @@ label {
 }
 
 footer {
-    background: linear-gradient(135deg, #22d3ee, #1e40af);
+    background: linear-gradient(135deg, #5fbac8, #3f6ead);
     color: #fff;
     padding: 40px 20px 20px;
     font-family: 'Open Sans', sans-serif;
