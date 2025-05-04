@@ -1,0 +1,31 @@
+@media (max-width: 768px) {
+    .conocenos h1, 
+    .equipo h2, 
+    .nuestro-trabajo h2 {
+        font-size: 28px;
+    }
+    
+    .c1 {
+        padding: 20px;
+    }
+    
+    .miembro {
+        max-width: 100%;
+    }
+    
+    .galeria {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .conocenos h1, 
+    .equipo h2, 
+    .nuestro-trabajo h2 {
+        font-size: 24px;
+    }
+    
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+}
