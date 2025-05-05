@@ -26,7 +26,7 @@ function addFloatingTipStyles() {
       visibility: hidden;
       width: 0;
       opacity: 0;
-      background: linear-gradient(135deg, #2563eb, #0891b2);
+   background: linear-gradient(135deg, #33C0F1,#1E2D93);
       color: #fff;
       text-align: center;
       border-radius: 6px;
@@ -99,7 +99,7 @@ function addFloatingTipStyles() {
     }
 
     .cabecera-tip {
-    background: linear-gradient(135deg, #2563eb, #0891b2);
+    background: linear-gradient(135deg, #33C0F1, #1E2D93);
       color: white;
       padding: 15px 20px;
       display: flex;
@@ -163,7 +163,7 @@ function addFloatingTipStyles() {
       position: absolute;
       width: 150px;
       height: 150px;
-      background: #2563eb;
+      background: #1E2D93;
       opacity: 0.1;
       border-radius: 50%;
       top: -30px;

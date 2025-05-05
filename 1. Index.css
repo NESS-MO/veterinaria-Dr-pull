@@ -14,7 +14,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #5fbac8, #3f6ead);
+    background: linear-gradient(135deg,  #33C0F1,#1E2D93);
     ;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -116,7 +116,7 @@ nav a:hover {
 }
 
 .agendar {
-    background-color: #1e40af;
+    background-color: #1E2D93;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -127,18 +127,18 @@ nav a:hover {
 
 .agendar:hover {
     transform: scale(1.05);
-    background-color: #1e40af;
+    background-color: #1E2D93;
 }
 
 .dispo {
     text-decoration: underline;
-    color: #1e40af;
+    color: #1E2D93;
 }
 
 
 
 .agendar-submit {
-    background-color:   #1e40af;
+    background-color:   #1E2D93;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -149,7 +149,7 @@ nav a:hover {
 
 .agendar-submit:hover {
     transform: scale(1.05);
-    background-color: #1e40af;
+    background-color: #1E2D93;
 }
 
 /* Estilos generales para la sección */
@@ -167,7 +167,7 @@ nav a:hover {
 .section-title {
     font-size: 3.2rem;
     margin-bottom: 20px;
-    color: #3f6ead;
+    color: #1E2D93;
     position: relative;
     display: inline-block;
 }
@@ -180,7 +180,7 @@ nav a:hover {
     transform: translateX(-50%);
     width: 120px;
     height: 5px;
-    background-color: #5fbac8;
+    background-color: #33C0F1,;
     border-radius: 3px;
 }
 
@@ -240,7 +240,7 @@ nav a:hover {
     bottom: -70px;
     left: 0;
     width: 100%;
-    background: rgba(95, 186, 200, 0.95);
+    background: #33C0F1,(95, 186, 200, 0.95);
     padding: 22px 0;
     display: flex;
     justify-content: center;
@@ -271,12 +271,12 @@ nav a:hover {
 .miembro h3 {
     font-size: 2.2rem;
     margin-bottom: 10px;
-    color: #3f6ead;
+    color: #1E2D93;
 }
 
 .especialidad {
     font-size: 1.3rem;
-    color: #5fbac8;
+    color: #33C0F1;
     font-weight: 600;
     margin-bottom: 25px;
     display: block;
@@ -292,20 +292,20 @@ nav a:hover {
 .btn-contactar {
     display: inline-block;
     padding: 15px 35px;
-    background-color: #3f6ead;
+    background-color: #33C0F1;
     color: white;
     border-radius: 35px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    border: 2px solid #3f6ead;
+    border: 2px solid #1E2D93;
     font-size: 1.1rem;
     margin-top: 15px;
 }
 
 .btn-contactar:hover {
     background-color: transparent;
-    color: #3f6ead;
+    color: #1E2D93;
 }
 
 /* Responsive */
@@ -387,7 +387,7 @@ nav a:hover {
 .conocenos h1 {
     font-size: 36px;
     margin-bottom: 40px;
-    color: #3f6ead;
+    color:#1E2D93;
     position: relative;
     display: inline-block;
 }
@@ -400,7 +400,7 @@ nav a:hover {
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background-color: #5fbac8;
+    background-color:#33C0F1;
 }
 
 .conocenos2 {
@@ -439,7 +439,7 @@ nav a:hover {
 .c1 h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #3f6ead;
+    color: #1E2D93;
 }
 
 .c1 p {
@@ -467,7 +467,7 @@ nav a:hover {
     content: '✓';
     position: absolute;
     left: 0;
-    color: #5fbac8;
+    color: #33C0F1;
     font-weight: bold;
 }
 
@@ -488,7 +488,7 @@ nav a:hover {
 .equipo h2 {
     font-size: 36px;
     margin-bottom: 40px;
-    color: #3f6ead;
+    color:  #1E2D93;
 }
 
 .miembros {
@@ -524,7 +524,7 @@ nav a:hover {
 
 .miembro h3 {
     font-size: 20px;
-    color: #3f6ead;
+    color: #1E2D93;
     margin-bottom: 10px;
 }
 
@@ -542,7 +542,7 @@ nav a:hover {
 .nuestro-trabajo h2 {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #3f6ead;
+    color: #1E2D93;
     position: relative;
     display: inline-block;
 }
@@ -555,7 +555,7 @@ nav a:hover {
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background-color: #5fbac8;
+    background-color: #33C0F1;
 }
 
 .nuestro-trabajo p {
@@ -609,7 +609,7 @@ nav a:hover {
 .f-mapa h2 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #1e40af;
+    color: #1E2D93;
 }
 
 .mapa {
@@ -621,7 +621,7 @@ nav a:hover {
 }
 
 footer {
-    background: linear-gradient(135deg, #5fbac8, #3f6ead);
+    background: linear-gradient(135deg, #33C0F1, #1E2D93);
     color: #fff;
     padding: 40px 20px 20px;
     font-family: 'Open Sans', sans-serif;
@@ -756,7 +756,7 @@ footer {
         right: -100%; /* Ocultar el menú fuera de la pantalla */
         width: 70%;
         height: 100vh;
-        background: linear-gradient(135deg, #2563eb, #0891b2);
+        background: linear-gradient(135deg, #33C0F1, #1E2D93);
         flex-direction: column;
         justify-content: center;
         align-items: center;
