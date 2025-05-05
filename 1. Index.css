@@ -15,7 +15,6 @@ header {
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(135deg,  #33C0F1,#1E2D93);
-    ;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
@@ -151,6 +150,7 @@ nav a:hover {
     transform: scale(1.05);
     background-color: #1E2D93;
 }
+
 
 /* Estilos generales para la sección */
 .equipo {
@@ -378,6 +378,7 @@ nav a:hover {
 }
 
 
+
 .conocenos {
     padding: 60px 20px;
     background-color: #ffffff;
@@ -478,60 +479,85 @@ nav a:hover {
     display: block;
 }
 
-/* Estilos para la sección de equipo */
-.equipo {
+.equipo-nuevo {
     padding: 60px 20px;
     background-color: #f9f9f9;
     text-align: center;
 }
 
-.equipo h2 {
+.equipo-nuevo h2 {
     font-size: 36px;
+
     margin-bottom: 40px;
     color:  #1E2D93;
+    position: relative;
+
+
+    
 }
 
-.miembros {
+.equipo-nuevo h2::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background-color: #5fbac8;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tarjetas-equipo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-.miembro {
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
+.tarjeta {
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
-.miembro:hover {
+.tarjeta:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.miembro .text-content {
-    padding: 20px;
-    flex: 1;
+.tarjeta img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
 
-.miembro h3 {
+.tarjeta h3 {
     font-size: 20px;
     color: #1E2D93;
     margin-bottom: 10px;
 }
 
-.miembro p {
-    font-size: 16px;
-    color: #555;
+.especialidad {
+    font-size: 14px;
+    color: #5fbac8;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
+
+.tarjeta p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+    
 
 .nuestro-trabajo {
     padding: 60px 20px;
@@ -613,7 +639,7 @@ nav a:hover {
 }
 
 .mapa {
-    width: 100%;
+    width: 80%;
     height: 500px;
     border: 0;
     border-radius: 10px;
