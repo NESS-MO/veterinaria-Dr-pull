@@ -15,7 +15,6 @@ header {
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(135deg, #5fbac8, #3f6ead);
-    ;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
