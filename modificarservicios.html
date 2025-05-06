@@ -7,16 +7,14 @@
   <title>Administrar Servicios - DR.PUL</title>
   <link rel="stylesheet" href="productos.css">
   <style>
-    /* Base Styles */
-  
     * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-  
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background-image: url(Imagenes/pexels-catscoming-3712095.jpg );
+      background-color: rgba(254, 251, 251, 0.2);
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -40,51 +38,49 @@
       animation: fadeIn 1s ease-in-out;
     }
 
+    .logo {
+      height: 100px;
+      margin-bottom: 20px;
+    }
 
-    .logo{
-            height: 100px;
-            margin-bottom: 20px;
-        }
-          
-          /* Estilos para la barra lateral */
-          .sidebar {
-            width: 290px;
-            height: 100vh;
-            background: linear-gradient(135deg, #33C0F1,#1E2D93);  
-             color: white;
-            padding: 20px;
-            position: fixed;
-            left: 0;
-            top: 0;
-            overflow-y: auto;
-          }
-          
-          .sidebar h2 {
-            text-align: center;
-            margin-top: 0;
-          }
-          
-          .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-          }
-          
-          .sidebar ul li {
-            margin: 20px 0;
-          }
-          
-          .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            display: block;
-            padding: 10px;
-            transition: background-color 0.3s ease;
-          }
-          
-          .sidebar ul li a:hover {
-            background-color: #e4e7eb67;
-          }
+    .sidebar {
+      width: 290px;
+      height: 100vh;
+      background: linear-gradient(135deg, #33C0F1, #1E2D93);
+      color: white;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 20px 0;
+    }
+
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      display: block;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #e4e7eb67;
+    }
 
     @keyframes fadeIn {
       0% { opacity: 0; }
@@ -94,10 +90,9 @@
     .admin-container {
       width: 90%;
       max-width: 1200px;
-      background: rgba(255, 255, 255, 0.9); /* Agregamos transparencia para que la imagen de fondo sea visible */
-      padding: 20px;  
+      background: transparent; /* Cambiado de rgba(255, 255, 255, 0.9) a transparente */
+      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease-in-out;
       animation: slideIn 1s ease-out;
       margin-left: 470px;
@@ -108,7 +103,6 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Input and Button Styles */
     .input-group {
       display: flex;
       flex-direction: column;
@@ -147,7 +141,6 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-    
 
     button:hover {
       background-color: #1E2D93;
@@ -178,7 +171,7 @@
     }
 
     th {
-      background-color:#1E2D93;
+      background-color: #1E2D93;
       color: #fff;
       font-weight: 600;
     }
@@ -200,7 +193,6 @@
       transition: background-color 0.3s, transform 0.3s ease;
     }
 
-    /* Media Queries */
     @media (max-width: 768px) {
       h1 {
         font-size: 28px;
@@ -263,13 +255,13 @@
     <img class="logo" src="Imagenes/logo2.png" alt="">
     <h2>Menú</h2>
     <ul>
-          <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
-          <li><a href="registrocitas.html">Registro Citas</a></li>
-          <li><a href="#">Registro Clientes</a></li>
-          <li><a href="5. Modificar-tipdelasemana.html">Modificar Información <br>¡TIP DE LA SEMANA!</a></li>
-          <li><a href="5. modificar-galeria.html">Modificar fotos "Nuestro trabajo"</a></li>
-          <li><a href="modificarservicios.html">Modificar Servicios</a></li>
-          <li><a href="1. Index.html">Cerrar sesión</a></li>
+      <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
+      <li><a href="registrocitas.html">Registro Citas</a></li>
+      <li><a href="#">Registro Clientes</a></li>
+      <li><a href="5. Modificar-tipdelasemana.html">Modificar Información <br>¡TIP DE LA SEMANA!</a></li>
+      <li><a href="5. modificar-galeria.html">Modificar fotos "Nuestro trabajo"</a></li>
+      <li><a href="modificarservicios.html">Modificar Servicios</a></li>
+      <li><a href="1. Index.html">Cerrar sesión</a></li>
     </ul>
   </div>
 
@@ -279,7 +271,7 @@
     <div class="input-group">
       <label for="nombreServicio">Nombre del Servicio</label>
       <input type="text" id="nombreServicio" placeholder="Nombre del Servicio">
-      
+
       <label for="imagenServicio">Imagen del Servicio</label>
       <input type="file" id="imagenServicio" accept="image/*">
 
@@ -300,10 +292,8 @@
       </thead>
       <tbody id="tablaServicios">
         <!-- Servicios se cargan aquí -->
-      
       </tbody>
     </table>
-   
   </div>
 
   <script>
@@ -327,7 +317,6 @@
       });
     }
   </script>
- <CENTEr>
-</body>
 
+</body>
 </html>
