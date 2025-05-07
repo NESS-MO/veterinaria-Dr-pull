@@ -41,12 +41,9 @@ header {
 }
 
 nav {
-    display: block;
-    height: 10%;
     display: flex;
     gap: 15px;
     align-items: center;
-    list-style-type: none;
 }
 
 nav a {
@@ -641,7 +638,7 @@ nav a:hover {
 }
 
 .mapa {
-    width: 80%;
+    width: 100%;
     height: 500px;
     border: 0;
     border-radius: 10px;
