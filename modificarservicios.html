@@ -6,14 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administrar Servicios - DR.PUL</title>
   <link rel="stylesheet" href="productos.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Base Styles */
-  
-    * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
   
     body {
       background-image: url(Imagenes/pexels-catscoming-3712095.jpg );
@@ -178,7 +172,7 @@
     }
 
     th {
-      background-color: #1e40af;
+      background-color: #3f6ead;
       color: #fff;
       font-weight: 600;
     }
@@ -259,17 +253,16 @@
 
 <body>
 
-  <div class="sidebar">
-    <img class="logo" src="Imagenes/logo2.png" alt="">
-    <h2>Menú</h2>
-    <ul>
-          <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
-          <li><a href="registrocitas.html">Registro Citas</a></li>
-          <li><a href="#">Registro Clientes</a></li>
-          <li><a href="5. Modificar-tipdelasemana.html">Modificar Información <br>¡TIP DE LA SEMANA!</a></li>
-          <li><a href="5. modificar-galeria.html">Modificar fotos "Nuestro trabajo"</a></li>
-          <li><a href="modificarservicios.html">Modificar Servicios</a></li>
-          <li><a href="1. Index.html">Cerrar sesión</a></li>
+  <!-- Sidebar -->
+  <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
+    <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
+    <ul class="space-y-3">
+      <li><a href="gestioncitas.html" class="block hover:bg-white/20 p-2 rounded">Citas Solicitadas</a></li>
+      <li><a href="registrocitas.html" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
+      <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
+      <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
+      <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
+      <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
     </ul>
   </div>
 

@@ -14,48 +14,48 @@
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .sidebar {
-            width: 290px;
+    .logo{
+            height: 100px;
+            margin-bottom: 20px;
+        }
+          
+          .sidebar {
+            width: 250px;
             height: 100vh;
-            background: linear-gradient(135deg, #22d3ee,#1e40af);
+            background: linear-gradient(135deg, #64c5d4, #225699);
             color: white;
             padding: 20px;
             position: fixed;
             left: 0;
             top: 0;
-        }
-
-        .sidebar h2 {
+          }
+          
+          .sidebar h2 {
             text-align: center;
-        }
-
-        .sidebar ul {
-            list-style: none;
+            margin-top: 0;
+          }
+          
+          .sidebar ul {
+            list-style-type: none;
             padding: 0;
-        }
-
-        .sidebar ul li {
+          }
+          
+          .sidebar ul li {
             margin: 20px 0;
-        }
-
-        .sidebar ul li a {
+          }
+          
+          .sidebar ul li a {
             color: white;
             text-decoration: none;
             font-size: 18px;
             display: block;
             padding: 10px;
             transition: background-color 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
+          }
+          
+          .sidebar ul li a:hover {
             background-color: #e4e7eb67;
-        }
-
-        .logo {
-            height: 100px;
-            display: block;
-            margin: 0 auto 20px;
-        }
+          }
 
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -98,12 +98,11 @@
   <div class="flex flex-col md:flex-row min-h-screen">
 
     <!-- Sidebar -->
-    <div class="w-full md:w-72 bg-gradient-to-br from-cyan-400 to-blue-800 text-white p-4 md:fixed md:h-full top-0 left-0 z-10">
+    <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
       <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
-      <h2 class="text-center text-xl font-bold mb-4">Menú</h2>
       <ul class="space-y-3">
         <li><a href="gestioncitas.html" class="block hover:bg-white/20 p-2 rounded">Citas Solicitadas</a></li>
-        <li><a href="#" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
+        <li><a href="registrocitas.html" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
         <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
         <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
         <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
@@ -114,7 +113,7 @@
     <!-- Main Content -->
     <div class="flex-1 md:ml-72 p-6 fade-in">
       <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-lg p-6">
-        <h2 class="text-3xl font-bold mb-6 text-blue-800">📅 Registro de Citas</h2>
+        <h2 class="text-3xl font-bold mb-6 text-[#3f6ead]">📅 Registro de Citas</h2>
 
         <!-- Mensaje de éxito -->
         <div id="mensaje-exito" class="hidden mb-4 p-3 rounded-md bg-green-100 text-green-800 text-sm font-medium transition duration-300">
@@ -147,7 +146,7 @@
 
           <input type="text" id="observaciones" placeholder="Observaciones" class="border p-2 rounded-md focus:ring-2 focus:ring-blue-400" />
 
-          <button type="submit" class="col-span-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 active:scale-95 transition">Agregar Cita</button>
+          <button type="submit" class="col-span-full bg-[#3f6ead] text-white py-2 px-4 rounded-md hover:bg-[#5fbac8] active:scale-95 transition">Agregar Cita</button>
         </form>
 
         <!-- Tabla -->

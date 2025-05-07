@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Edición Tip de la Semana</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       margin: 0;
@@ -27,18 +28,6 @@
         }
 
         @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            .sidebar ul {
-                display: flex;
-                flex-direction: column;
-            }
-            .sidebar ul li {
-                margin: 10px 0;
-            }
             body {
                 margin-left: 0;
             }
@@ -47,48 +36,6 @@
             }
         }
 
-    .logo {
-      height: 80px;
-      margin: 20px auto 10px;
-      display: block;
-    }
-
-    .sidebar {
-            width: 290px;
-            height: 100vh;
-            background: linear-gradient(135deg, #22d3ee,#1e40af);
-            color: white;
-            padding: 20px;
-            position: fixed;
-            left: 0;
-            top: 0;
-        }
-
-        .sidebar h2 {
-            text-align: center;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            margin: 20px 0;
-        }
-
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            display: block;
-            padding: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #e4e7eb67;
-        }
 
     .main-content {
       margin-left: 280px;
@@ -215,16 +162,16 @@
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <img class="logo" src="Imagenes/logo2.png" alt="Logo">
-    <h2>Menú</h2>
-    <ul>
-      <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
-      <li><a href="registrocitas.html">Registro Citas</a></li>
-      <li><a href="5. Modificar-tipdelasemana.html">Modificar Información <br>¡TIP DE LA SEMANA!</a></li>
-      <li><a href="5. modificar-galeria.html">Modificar fotos "Nuestro trabajo"</a></li>
-      <li><a href="modificarservicios.html">Modificar Servicios</a></li>
-      <li><a href="1. Principal.html">Cerrar sesión</a></li>
+  <!-- Sidebar -->
+  <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
+    <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
+    <ul class="space-y-3">
+      <li><a href="gestioncitas.html" class="block hover:bg-white/20 p-2 rounded">Citas Solicitadas</a></li>
+      <li><a href="registrocitas.html" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
+      <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
+      <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
+      <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
+      <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
     </ul>
   </div>
 
