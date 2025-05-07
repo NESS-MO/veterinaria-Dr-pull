@@ -6,104 +6,305 @@
   <title>Registro de Citas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .fade-in {
-      animation: fadeIn 0.6s ease-out forwards;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
     }
     
+    .logo{
+            height: 100px;
+            margin-bottom: 20px;
+        }
+          
+          .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(135deg, #64c5d4, #225699);
+            color: white;
+
+    h1 {
+        font-size: 2.5rem;
+        color: #1E2D93;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        margin: 40px 0 20px;
+    }
+
     .sidebar {
             width: 290px;
             height: 100vh;
-            background: linear-gradient(135deg, #22d3ee,#1e40af);
-            color: white;
+            background: linear-gradient(135deg, #33C0F1,#1E2D93);  
+             color: white;
+
             padding: 20px;
             position: fixed;
             left: 0;
             top: 0;
-        }
-
-        .sidebar h2 {
+          }
+          
+          .sidebar h2 {
             text-align: center;
-        }
-
-        .sidebar ul {
-            list-style: none;
+            margin-top: 0;
+          }
+          
+          .sidebar ul {
+            list-style-type: none;
             padding: 0;
-        }
-
-        .sidebar ul li {
+          }
+          
+          .sidebar ul li {
             margin: 20px 0;
-        }
-
-        .sidebar ul li a {
+          }
+          
+          .sidebar ul li a {
             color: white;
             text-decoration: none;
             font-size: 18px;
             display: block;
             padding: 10px;
             transition: background-color 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
+          }
+          
+          .sidebar ul li a:hover {
             background-color: #e4e7eb67;
+          }
+            overflow-y: auto;
         }
 
-        .logo {
-            height: 100px;
-            display: block;
-            margin: 0 auto 20px;
-        }
+    .sidebar h2 {
+        text-align: center;
+    }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-        }
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
+    .sidebar ul li {
+        margin: 20px 0;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px; /* Mismo tamaño que el primero */
+        display: block;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            .sidebar ul {
-                display: flex;
-                flex-direction: column;
-            }
-            .sidebar ul li {
-                margin: 10px 0;
-            }
-            body {
-                margin-left: 0;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-        }
-  </style>
+    .sidebar ul li a:hover {
+        background-color: #e4e7eb67; /* Igual hover que el original */
+    }
+
+    .logo {
+        height: 100px; /* Igual tamaño que en el primer código */
+        display: block;
+        margin: 0 auto 20px;
+    }
+
+    section {
+        margin-left: 320px; /* Ajusté el espacio para la barra lateral */
+        margin-top: 20px;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 1550px;
+        margin-right: auto;
+        backdrop-filter: blur(10px);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: #3f6ead;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .guardar {
+        background-color: #27ae60;
+    }
+
+    .guardar:hover {
+        background-color: #2ecc71;
+    }
+
+    .eliminar {
+        background-color: #e74c3c;
+    }
+
+    .eliminar:hover {
+        background-color: #c0392b;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    #loading {
+        text-align: center;
+        padding: 20px;
+    }
+
+    #toggle-filtros {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #33C0F1, #1E2D93);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s, transform 0.3s;
+        margin: 0 auto 20px;
+        max-width: 200px;
+        justify-content: center;
+    }
+
+    #toggle-filtros:hover {
+        background: linear-gradient(135deg, #33C0F1, #1E2D93);
+        transform: scale(1.03);
+    }
+
+    .filtro-campos {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .filtro-campos.mostrar {
+        max-height: 1000px;
+        opacity: 1;
+    }
+
+    .filtro-campos .campo {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filtro-campos label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #1E2D93;
+        font-size: 14px;
+    }
+
+    .filtro-campos input {
+        padding: 10px 14px 10px 40px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        font-size: 15px;
+        background-color: #f9f9f9;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.3s;
+    }
+
+    .filtro-campos input:focus {
+        border-color: #1E2D93;
+        outline: none;
+        background-color: #fff;
+    }
+
+    .filtro-campos .campo::before {
+        content: "🔍";
+        position: absolute;
+        top: 35px;
+        left: 12px;
+        font-size: 14px;
+        opacity: 0.6;
+    }
+
+    #filtro-fecha::before,
+    #filtro-hora::before {
+        content: none;
+    }
+
+    #btn-limpiar {
+        background: linear-gradient(135deg, #33C0F1, #1E2D93);
+        color: white;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 24px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        align-self: flex-end;
+    }
+
+    #btn-limpiar:hover {
+        background-color: #d97706;
+    }
+</style>
+
 </head>
-<body class="bg-gray-100 font-sans">
+<body>
 
   <!-- Contenedor general en flex -->
-  <div class="flex flex-col md:flex-row min-h-screen">
-
+  <div>
     <!-- Sidebar -->
-    <div class="w-full md:w-72 bg-gradient-to-br from-cyan-400 to-blue-800 text-white p-4 md:fixed md:h-full top-0 left-0 z-10">
+    <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
       <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
-      <h2 class="text-center text-xl font-bold mb-4">Menú</h2>
       <ul class="space-y-3">
         <li><a href="gestioncitas.html" class="block hover:bg-white/20 p-2 rounded">Citas Solicitadas</a></li>
-        <li><a href="#" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
+        <li><a href="registrocitas.html" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
         <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
         <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
         <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
@@ -114,7 +315,7 @@
     <!-- Main Content -->
     <div class="flex-1 md:ml-72 p-6 fade-in">
       <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-lg p-6">
-        <h2 class="text-3xl font-bold mb-6 text-blue-800">📅 Registro de Citas</h2>
+        <h2 class="text-3xl font-bold mb-6 text-[#3f6ead]">📅 Registro de Citas</h2>
 
         <!-- Mensaje de éxito -->
         <div id="mensaje-exito" class="hidden mb-4 p-3 rounded-md bg-green-100 text-green-800 text-sm font-medium transition duration-300">
@@ -147,7 +348,7 @@
 
           <input type="text" id="observaciones" placeholder="Observaciones" class="border p-2 rounded-md focus:ring-2 focus:ring-blue-400" />
 
-          <button type="submit" class="col-span-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 active:scale-95 transition">Agregar Cita</button>
+          <button type="submit" class="col-span-full bg-[#3f6ead] text-white py-2 px-4 rounded-md hover:bg-[#5fbac8] active:scale-95 transition">Agregar Cita</button>
         </form>
 
         <!-- Tabla -->
