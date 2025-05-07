@@ -6,12 +6,19 @@
   <title>Registro de Citas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .fade-in {
-      animation: fadeIn 0.6s ease-out forwards;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
     }
     
     .logo{
@@ -24,6 +31,21 @@
             height: 100vh;
             background: linear-gradient(135deg, #64c5d4, #225699);
             color: white;
+
+    h1 {
+        font-size: 2.5rem;
+        color: #1E2D93;
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        margin: 40px 0 20px;
+    }
+
+    .sidebar {
+            width: 290px;
+            height: 100vh;
+            background: linear-gradient(135deg, #33C0F1,#1E2D93);  
+             color: white;
+
             padding: 20px;
             position: fixed;
             left: 0;
@@ -56,48 +78,230 @@
           .sidebar ul li a:hover {
             background-color: #e4e7eb67;
           }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
+            overflow-y: auto;
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
+    .sidebar h2 {
+        text-align: center;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            .sidebar ul {
-                display: flex;
-                flex-direction: column;
-            }
-            .sidebar ul li {
-                margin: 10px 0;
-            }
-            body {
-                margin-left: 0;
-            }
-            .main-content {
-                margin-left: 0;
-            }
-        }
-  </style>
+    .sidebar ul li {
+        margin: 20px 0;
+    }
+
+    .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px; /* Mismo tamaño que el primero */
+        display: block;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+        background-color: #e4e7eb67; /* Igual hover que el original */
+    }
+
+    .logo {
+        height: 100px; /* Igual tamaño que en el primer código */
+        display: block;
+        margin: 0 auto 20px;
+    }
+
+    section {
+        margin-left: 320px; /* Ajusté el espacio para la barra lateral */
+        margin-top: 20px;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 1550px;
+        margin-right: auto;
+        backdrop-filter: blur(10px);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: #1E2D93;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .guardar {
+        background-color: #27ae60;
+    }
+
+    .guardar:hover {
+        background-color: #2ecc71;
+    }
+
+    .eliminar {
+        background-color: #e74c3c;
+    }
+
+    .eliminar:hover {
+        background-color: #c0392b;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    #loading {
+        text-align: center;
+        padding: 20px;
+    }
+
+    #toggle-filtros {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #33C0F1, #1E2D93);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s, transform 0.3s;
+        margin: 0 auto 20px;
+        max-width: 200px;
+        justify-content: center;
+    }
+
+    #toggle-filtros:hover {
+        background: linear-gradient(135deg, #33C0F1, #1E2D93);
+        transform: scale(1.03);
+    }
+
+    .filtro-campos {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .filtro-campos.mostrar {
+        max-height: 1000px;
+        opacity: 1;
+    }
+
+    .filtro-campos .campo {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filtro-campos label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #1E2D93;
+        font-size: 14px;
+    }
+
+    .filtro-campos input {
+        padding: 10px 14px 10px 40px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        font-size: 15px;
+        background-color: #f9f9f9;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: border-color 0.3s;
+    }
+
+    .filtro-campos input:focus {
+        border-color: #1E2D93;
+        outline: none;
+        background-color: #fff;
+    }
+
+    .filtro-campos .campo::before {
+        content: "🔍";
+        position: absolute;
+        top: 35px;
+        left: 12px;
+        font-size: 14px;
+        opacity: 0.6;
+    }
+
+    #filtro-fecha::before,
+    #filtro-hora::before {
+        content: none;
+    }
+
+    #btn-limpiar {
+        background: linear-gradient(135deg, #33C0F1, #1E2D93);
+        color: white;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-weight: bold;
+        margin-top: 24px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        align-self: flex-end;
+    }
+
+    #btn-limpiar:hover {
+        background-color: #d97706;
+    }
+</style>
+
 </head>
-<body class="bg-gray-100 font-sans">
+<body>
 
   <!-- Contenedor general en flex -->
-  <div class="flex flex-col md:flex-row min-h-screen">
+  <div>
 
     <!-- Sidebar -->
+<<<<<<< HEAD
     <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
       <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
       <ul class="space-y-3">
@@ -108,6 +312,19 @@
         <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
         <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
       </ul>
+=======
+    <div class="sidebar">
+      <img class="logo" src="Imagenes/logo2.png" alt="">
+      <h2>Menú</h2>
+      <ul>
+        <li><a href="gestioncitas.html">Citas Solicitadas</a></li>
+        <li><a href="registrocitas.html">Registro Citas</a></li>
+        <li><a href="5. Modificar-tipdelasemana.html">Modificar Información <br>¡TIP DE LA SEMANA!</a></li>
+        <li><a href="5. modificar-galeria.html">Modificar fotos "Nuestro trabajo"</a></li>
+        <li><a href="modificarservicios.html">Modificar Servicios</a></li>
+        <li><a href="1. Index.html">Cerrar sesión</a></li>
+    </ul>
+>>>>>>> 20349d64c555382b79dbadc6aacd5d95444ad80c
     </div>
 
     <!-- Main Content -->
