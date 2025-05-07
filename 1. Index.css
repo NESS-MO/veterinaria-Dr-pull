@@ -784,7 +784,7 @@ footer {
         right: -100%; /* Ocultar el menú fuera de la pantalla */
         width: 70%;
         height: 100vh;
-        background: linear-gradient(135deg, #33C0F1, #1E2D93);
+        background: linear-gradient(135deg,  #33C0F1,#1E2D93);
         flex-direction: column;
         justify-content: center;
         align-items: center;
