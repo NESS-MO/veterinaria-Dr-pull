@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edición Tip de la Semana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        margin-left: 0;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+
+    .logo {
+      height: 80px;
+      margin: 20px auto 10px;
+      display: block;
+      font-family: inherit;
+      font-weight: normal;
+    }
+
+    .main-content {
+      margin-left: 280px;
+      padding: 100px 60px;
+      width: calc(100% - 280px);
+      min-height: 100vh;
+    }
+
+    .content-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      text-align: center;
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      margin: 12px auto 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #5fbac8, #3f6ead);
+      border-radius: 4px;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-label {
+      font-weight: 500;
+      color: #34495e;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .form-input {
+      padding: 0.8rem 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      width: 100%;
+      background-color: #f8fafc;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #33C0F1;
+      box-shadow: 0 0 0 3px rgba(51, 192, 241, 0.2);
+      background-color: white;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 150px;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    .image-upload-container {
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      background-color: #f8fafc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .image-upload-container:hover {
+      border-color: #33C0F1;
+      background-color: #f0f9ff;
+    }
+
+    .image-upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .image-upload-label svg {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.5rem;
+      color: #94a3b8;
+    }
+
+    #previewImage {
+      max-width: 100%;
+      max-height: 250px;
+      margin: 1rem auto;
+      border-radius: 10px;
+      object-fit: contain;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      display: none;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+    }
+
+    .btn svg {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, #5fbac8, #3f6ead);
+      color: white;
+      box-shadow: 0 4px 6px rgba(30, 45, 147, 0.1);
+    }
+
+    .btn-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(30, 45, 147, 0.15);
+    }
+
+    .btn-delete {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      box-shadow: 0 4px 6px rgba(239, 68, 68, 0.1);
+    }
+
+    .btn-delete:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(239, 68, 68, 0.15);
+    }
+
+    /* Animaciones */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse-once {
+      animation: pulse 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
+    <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
+    <ul class="space-y-3 font-normal"> <!-- Agregado font-normal aquí -->
+      <li><a href="gestioncitas.html" class="block hover:bg-white/20 p-2 rounded">Citas Solicitadas</a></li>
+      <li><a href="registrocitas.html" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
+      <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
+      <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
+      <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
+      <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
+      <li><a href="Editar_Usuario.html" class="block hover:bg-white/20 p-2 rounded"></a></li>
+    </ul>
+  </div>  
+
+  <div class="main-content fade-in">
+    <div class="content-container">
+      <h2>Configurar Tip de la Semana</h2>
+      
+      <div class="form-container">
+        <div class="form-group">
+          <div>
+            <label for="tipTitle" class="form-label">Título del Tip</label>
+            <input type="text" id="tipTitle" class="form-input" placeholder="Ingrese un título llamativo">
+          </div>
+
+          <div>
+            <label class="form-label">Imagen del Tip</label>
+            <div class="image-upload-container" onclick="document.getElementById('imageInput').click()">
+              <input type="file" id="imageInput" accept="image/*" style="display: none;">
+              <label for="imageInput" class="image-upload-label">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Haz clic para subir una imagen
+                <span class="text-xs mt-1">Formatos recomendados: JPG, PNG (Max. 2MB)</span>
+              </label>
+              <img id="previewImage" alt="Vista previa de la imagen">
+            </div>
+          </div>
+
+          <div>
+            <label for="tipText" class="form-label">Contenido del Tip</label>
+            <textarea id="tipText" class="form-input form-textarea" placeholder="Escribe aquí el contenido detallado del tip..."></textarea>
+          </div>
+        </div>
+
+        <div class="button-container">
+          <button class="btn btn-save" onclick="saveTip()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Guardar Tip
+          </button>
+          <button class="btn btn-delete" onclick="deleteTip()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            Eliminar Tip
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let hasChanges = false;
+    let initialTitle = '';
+    let initialText = '';
+    let initialImage = localStorage.getItem("tipImage") || '';
+
+    document.getElementById("imageInput").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        // Validar tamaño de archivo (max 2MB)
+        if (file.size > 2 * 1024 * 1024) {
+          alert("El archivo es demasiado grande. Por favor, selecciona una imagen menor a 2MB.");
+          return;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = document.getElementById("previewImage");
+          preview.src = e.target.result;
+          preview.style.display = "block";
+          hasChanges = true;
+          
+          // Animación al cargar imagen
+          preview.classList.add('pulse-once');
+          setTimeout(() => preview.classList.remove('pulse-once'), 500);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById("tipTitle").addEventListener("input", function() {
+      hasChanges = this.value !== initialTitle;
+    });
+
+    document.getElementById("tipText").addEventListener("input", function() {
+      hasChanges = this.value !== initialText;
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedImage = localStorage.getItem("tipImage");
+      const savedTitle = localStorage.getItem("tipTitle");
+      const savedText = localStorage.getItem("tipText");
+
+      if (savedImage) {
+        const preview = document.getElementById("previewImage");
+        preview.src = savedImage;
+        preview.style.display = "block";
+      }
+      if (savedTitle) {
+        document.getElementById("tipTitle").value = savedTitle;
+        initialTitle = savedTitle;
+      }
+      if (savedText) {
+        document.getElementById("tipText").value = savedText;
+        initialText = savedText;
+      }
+      
+      // Animación al cargar la página
+      document.querySelector('.form-container').classList.add('fade-in');
+    });
+
+    function saveTip() {
+      const tipTitle = document.getElementById("tipTitle").value;
+      const tipText = document.getElementById("tipText").value;
+      const imageInput = document.getElementById("imageInput");
+
+      if (!hasChanges && !imageInput.files[0]) {
+        alert("No se han realizado cambios para guardar.");
+        return;
+      }
+
+      if (!tipTitle || !tipText) {
+        alert("Por favor, completa tanto el título como el contenido del tip.");
+        return;
+      }
+
+      localStorage.setItem("tipTitle", tipTitle);
+      initialTitle = tipTitle;
+
+      localStorage.setItem("tipText", tipText);
+      initialText = tipText;
+
+      if (imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          localStorage.setItem("tipImage", e.target.result);
+          initialImage = e.target.result;
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+      }
+
+      hasChanges = false;
+      
+      // Animación de confirmación
+      const saveBtn = document.querySelector('.btn-save');
+      saveBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ¡Guardado!';
+      saveBtn.style.backgroundColor = '#10B981';
+      
+      setTimeout(() => {
+        saveBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Guardar Tip';
+        saveBtn.style.background = 'linear-gradient(135deg, #1E2D93, #33C0F1)';
+      }, 2000);
+    }
+
+    function deleteTip() {
+      if (confirm("¿Estás seguro de que deseas eliminar el Tip de la Semana? Esta acción no se puede deshacer.")) {
+        localStorage.removeItem("tipTitle");
+        localStorage.removeItem("tipText");
+        localStorage.removeItem("tipImage");
+
+        document.getElementById("tipTitle").value = '';
+        document.getElementById("tipText").value = '';
+        document.getElementById("previewImage").style.display = "none";
+        document.getElementById("imageInput").value = '';
+
+        // Animación de confirmación
+        const deleteBtn = document.querySelector('.btn-delete');
+        deleteBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> ¡Eliminado!';
+        
+        setTimeout(() => {
+          deleteBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg> Eliminar Tip';
+        }, 2000);
+      }
+    }
+  </script>
+</body>
+</html>

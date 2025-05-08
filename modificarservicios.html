@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrar Servicios - DR.PUL</title>
+  <link rel="stylesheet" href="productos.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: rgba(254, 251, 251, 0.2);
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #1E2D93;
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .admin-container {
+      width: 90%;
+      max-width: 1200px;
+      padding: 20px;
+      border-radius: 10px;
+      margin-left: 470px;
+      box-shadow: 10px 10px 10px rgb(150, 150, 150);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .input-group label {
+      font-size: 18px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .input-group input {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      background-color: #1E2D93;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease;
+      max-width: 200px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #1E2D93;
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #3f6ead;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    td img {
+      max-width: 100px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    tr:hover {
+      background-color: #e3f2fd;
+    }
+
+    @media (max-width: 768px) {
+      .admin-container {
+        margin-left: 0;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
+    <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
+    <ul class="space-y-3">
+      <li><a href="gestioncitas.html" class="block hover:bg-white/20 p-2 rounded">Citas Solicitadas</a></li>
+      <li><a href="registrocitas.html" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
+      <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
+      <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
+      <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
+      <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
+    </ul>
+  </div>
+
+  <div class="admin-container">
+    <h1>Administrar Servicios</h1>
+
+    <div class="input-group">
+      <label for="nombreServicio">Nombre del Servicio</label>
+      <input type="text" id="nombreServicio" placeholder="Nombre del Servicio" />
+
+      <label for="imagenServicio">Imagen del Servicio</label>
+      <input type="file" id="imagenServicio" accept="image/*" />
+
+      <label for="descripcionServicio">Descripción del Servicio</label>
+      <input type="text" id="descripcionServicio" placeholder="Descripción del Servicio" />
+    </div>
+
+    <button onclick="agregarServicio()">Agregar Servicio</button>
+    <button onclick="borrarTodo()" style="background-color: red;">Borrar Todos</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Servicio</th>
+          <th>Imagen</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaServicios"></tbody>
+    </table>
+  </div>
+
+  <script>
+    let servicios = [];
+
+    window.onload = function () {
+      const guardados = localStorage.getItem('servicios');
+      if (guardados) {
+        servicios = JSON.parse(guardados);
+        renderizarServicios();
+      }
+    };
+
+    function guardarEnLocalStorage() {
+      localStorage.setItem('servicios', JSON.stringify(servicios));
+    }
+
+    function agregarServicio() {
+      const nombre = document.getElementById('nombreServicio').value.trim();
+      const descripcion = document.getElementById('descripcionServicio').value.trim();
+      const imagenInput = document.getElementById('imagenServicio');
+
+      if (!nombre || !descripcion || !imagenInput.files[0]) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imagen = e.target.result;
+        servicios.push({ nombre, descripcion, imagen });
+        guardarEnLocalStorage();
+        renderizarServicios();
+        limpiarFormulario();
+      };
+      reader.readAsDataURL(imagenInput.files[0]);
+    }
+
+    function renderizarServicios() {
+      const tabla = document.getElementById('tablaServicios');
+      tabla.innerHTML = '';
+      servicios.forEach((servicio, index) => {
+        tabla.innerHTML += `
+          <tr>
+            <td>${servicio.nombre}</td>
+            <td><img src="${servicio.imagen}" alt="${servicio.nombre}"></td>
+            <td>${servicio.descripcion}</td>
+            <td>
+              <button onclick="editarServicio(${index})">Editar</button>
+              <button onclick="eliminarServicio(${index})">Eliminar</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    function eliminarServicio(index) {
+      if (confirm("¿Eliminar este servicio?")) {
+        servicios.splice(index, 1);
+        guardarEnLocalStorage();
+        renderizarServicios();
+      }
+    }
+
+    function editarServicio(index) {
+      const servicio = servicios[index];
+      document.getElementById('nombreServicio').value = servicio.nombre;
+      document.getElementById('descripcionServicio').value = servicio.descripcion;
+      servicios.splice(index, 1); // Eliminar para reemplazar al agregar de nuevo
+      guardarEnLocalStorage();
+      renderizarServicios();
+    }
+
+    function borrarTodo() {
+      if (confirm("¿Seguro que deseas eliminar todos los servicios?")) {
+        servicios = [];
+        guardarEnLocalStorage();
+        renderizarServicios();
+      }
+    }
+
+    function limpiarFormulario() {
+      document.getElementById('nombreServicio').value = '';
+      document.getElementById('descripcionServicio').value = '';
+      document.getElementById('imagenServicio').value = '';
+    }
+  </script>
+</body>
+
+</html>
