@@ -24,6 +24,10 @@ header {
 
 .Logotipo img {
     height: 80px;
+<<<<<<< HEAD
+=======
+    max-width: 100%; 
+>>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
 }
 
 .eslogan {

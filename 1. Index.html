@@ -19,11 +19,19 @@
         <!--Logo de encabezado-->
         <div class="Logotipo">
             <a href="1. Index.html">
+<<<<<<< HEAD
                 <img src="imagenes/logo2.png" alt="logo DR.PUL">
             </a>
             <h3 class="eslogan">COMPROMETIDOS CON LA SALUD ANIMAL</h3>
         </div>
 
+=======
+                <img src="Imagenes/logo2.png" alt="logo DR.PUL">
+            </a>
+            <h3 class="eslogan">COMPROMETIDOS CON LA SALUD ANIMAL</h3>
+        </div>
+    
+>>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
         <!--Menú hamburguesa responsivo-->
         <button class="abrir" id="abrir-menu">☰</button>
         
@@ -31,7 +39,11 @@
         <nav class="opciones" id="menu">
             <button class="cerrar" id="cerrar-menu">✕</button>
             <a href="1. Index.html">INICIO</a>
+<<<<<<< HEAD
             <a href="#conocenos">CONÓCENOS</a>
+=======
+            <a href="1. Index.html#conocenos">CONÓCENOS</a>
+>>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
             <a href="2. Servicios.html">SERVICIOS</a>
             <a href="3. Agendar.html">AGENDAR CITA</a>
             <a href="4. Login.html"><img class="perfil" src="Imagenes/perfil.png" alt="logo DR.PUL"></a>
@@ -120,6 +132,7 @@
 </section>
 
 
+<<<<<<< HEAD
 
     <!--Galeria de imagenes-->
     <section class="nuestro-trabajo">
@@ -147,6 +160,65 @@
             </div>
         </div>
     </section>
+=======
+<!-- Sección de galería en 1. Index.html -->
+<!-- Sección de galería en 1. Index.html -->
+<section class="nuestro-trabajo">
+    <h2>Nuestro Trabajo</h2>
+    <p>Aquí puedes ver algunas imágenes de nuestro día a día y los servicios que ofrecemos en la clínica.</p>
+    <div id="galeria-trabajo" class="galeria">
+        <!-- Las imágenes se cargarán dinámicamente desde localStorage -->
+    </div>
+</section>
+
+<script>
+    // Función para cargar las imágenes de la galería en el orden correcto
+    function cargarGaleria() {
+        const galeria = document.getElementById('galeria-trabajo');
+        galeria.innerHTML = ''; // Limpiar galería antes de cargar
+        
+        const imagenesGuardadas = JSON.parse(localStorage.getItem('galeriaImagenes')) || [];
+        
+        // Si no hay imágenes guardadas, mostrar las predeterminadas
+        if (imagenesGuardadas.length === 0) {
+            const imagenesPredeterminadas = [
+                'Imagenes/w1.jpeg',
+                'Imagenes/w2.jpeg',
+                'Imagenes/w3.jpeg',
+                'Imagenes/w4.jpeg',
+                'Imagenes/w5.jpeg',
+                'Imagenes/w6.jpeg'
+            ];
+            
+            imagenesPredeterminadas.forEach(src => {
+                const div = document.createElement('div');
+                div.className = 'imagen';
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Nuestro trabajo';
+                div.appendChild(img);
+                galeria.appendChild(div);
+            });
+        } else {
+            // Mostrar las imágenes guardadas en el orden exacto
+            imagenesGuardadas.forEach(imagen => {
+                if (imagen && imagen.data) {
+                    const div = document.createElement('div');
+                    div.className = 'imagen';
+                    const img = document.createElement('img');
+                    img.src = imagen.data;
+                    img.alt = 'Nuestro trabajo';
+                    div.appendChild(img);
+                    galeria.appendChild(div);
+                }
+            });
+        }
+    }
+
+    // Cargar la galería cuando la página esté lista
+    document.addEventListener('DOMContentLoaded', cargarGaleria);
+</script>
+>>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
 
     <!--Mapa-->
     <section class="f-mapa">
@@ -210,9 +282,15 @@
     <!-- Widget de Accesibilidad -->
     <script>
         window.siennaOptions = {
+<<<<<<< HEAD
             buttonColor: '#3a6ead',
             buttonIconColor: '#ffffff',
             highlightColor: '#3a6ead',
+=======
+            buttonColor: '#1E2D93',
+            buttonIconColor: '#ffffff',
+            highlightColor: '##1E2D93',
+>>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
             menuBackgroundColor: '#ffffff',
             menuTextColor: '#333333'
         };
