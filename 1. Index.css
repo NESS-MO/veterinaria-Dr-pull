@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
 html {
     scroll-behavior: smooth; 
 }
@@ -44,18 +40,12 @@ header {
 }
 
 nav {
-<<<<<<< HEAD
     display: block;
     height: 10%;
     display: flex;
     gap: 15px;
     align-items: center;
     list-style-type: none;
-=======
-    display: flex;
-    gap: 15px;
-    align-items: center;
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
 }
 
 nav a {
@@ -650,11 +640,7 @@ nav a:hover {
 }
 
 .mapa {
-<<<<<<< HEAD
     width: 80%;
-=======
-    width: 100%;
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     height: 500px;
     border: 0;
     border-radius: 10px;
@@ -797,11 +783,7 @@ footer {
         right: -100%; /* Ocultar el menú fuera de la pantalla */
         width: 70%;
         height: 100vh;
-<<<<<<< HEAD
         background: linear-gradient(135deg, #5fbac8, #3f6ead);
-=======
-        background: linear-gradient(135deg,  #33C0F1,#1E2D93);
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
         flex-direction: column;
         justify-content: center;
         align-items: center;
