@@ -261,7 +261,9 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
+
+
+    <!-- Sidebar -->
     <!-- Sidebar -->
     <div class="w-full md:w-72 bg-gradient-to-br from-[#33C0F1] to-[#1E2D93] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
         <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
@@ -275,6 +277,8 @@
            <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
         </ul>
     </div>
+
+
     <section>
         <h1>Panel de Administración de Citas</h1>
 
@@ -391,13 +395,8 @@
                             <td><input type="time" value="${cita.hora}" data-index="${index}" data-campo="hora"></td>
                             <td><input type="text" value="${cita.servicios.join(', ')}" data-index="${index}" data-campo="servicios"></td>
                             <td class="actions">
-<<<<<<< HEAD
-                                <button class="guardar" data-index="${index}">Guardar</button>
-                                <button class="eliminar" data-index="${index}">Eliminar</button>
-=======
                                 <button class="guardar" data-index="${index}">Aceptar</button>
                                 <button class="eliminar" data-index="${index}">Rechazar</button>
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
                             </td>
                         `;
                     }
