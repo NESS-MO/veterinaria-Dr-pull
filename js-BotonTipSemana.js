@@ -26,11 +26,7 @@ function addFloatingTipStyles() {
       visibility: hidden;
       width: 0;
       opacity: 0;
-<<<<<<< HEAD
-      background: linear-gradient(135deg, #5fbac8, #3f6ead);
-=======
       background: linear-gradient(135deg, #33C0F1, #1E2D93);
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
       color: #fff;
       text-align: center;
       border-radius: 6px;

@@ -2,17 +2,10 @@
 <html lang="es">
 
 <head>
-<<<<<<< HEAD
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administrar Servicios - DR.PUL</title>
-  <link rel="stylesheet" href="productos.css" />
-=======
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administrar Servicios - DR.PUL</title>
   <link rel="stylesheet" href="productos.css">
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     * {
@@ -20,12 +13,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-<<<<<<< HEAD
-
-    body {
-      background-color: rgba(254, 251, 251, 0.2);
-      font-family: 'Open Sans', sans-serif;
-=======
     
     body {
       background-color: rgba(254, 251, 251, 0.2);
@@ -35,7 +22,6 @@
       font-family: 'Open Sans', sans-serif;
       margin: 0;
       padding: 0;
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
       display: flex;
       justify-content: center;
       align-items: center;
@@ -49,8 +35,6 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 30px;
-<<<<<<< HEAD
-=======
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1s ease-in-out;
     }
@@ -58,19 +42,11 @@
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     }
 
     .admin-container {
       width: 90%;
       max-width: 1200px;
-<<<<<<< HEAD
-      padding: 20px;
-      border-radius: 10px;
-      margin-left: 470px;
-      box-shadow: 10px 10px 10px rgb(150, 150, 150);
-      background: rgba(255, 255, 255, 0.9);
-=======
       background: transparent; /* Cambiado de rgba(255, 255, 255, 0.9) a transparente */
       padding: 20px;
       border-radius: 10px;
@@ -83,7 +59,6 @@
     @keyframes slideIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     }
 
     .input-group {
@@ -106,13 +81,10 @@
       border: 1px solid #ddd;
     }
 
-<<<<<<< HEAD
-=======
     .input-group input[type="file"] {
       padding: 8px;
     }
 
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     button {
       background-color: #1E2D93;
       color: #fff;
@@ -122,15 +94,10 @@
       cursor: pointer;
       font-size: 14px;
       transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease;
-<<<<<<< HEAD
-      max-width: 200px;
-      margin-top: 10px;
-=======
       width: 100%;
       max-width: 200px;
       margin-top: 20px;
       margin-bottom: 20px;
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     }
 
     button:hover {
@@ -143,12 +110,6 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
-<<<<<<< HEAD
-    }
-
-    th,
-    td {
-=======
       opacity: 0;
       animation: fadeInTable 1s ease-in-out forwards;
     }
@@ -159,24 +120,16 @@
     }
 
     th, td {
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
       border: 1px solid #ddd;
       padding: 12px;
       text-align: center;
       vertical-align: middle;
       font-size: 16px;
-<<<<<<< HEAD
-    }
-
-    th {
-      background-color: #3f6ead;
-=======
       transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     th {
       background-color: #1E2D93;
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
       color: #fff;
       font-weight: 600;
     }
@@ -185,32 +138,15 @@
       max-width: 100px;
       height: auto;
       border-radius: 8px;
-<<<<<<< HEAD
-=======
       transition: transform 0.3s ease;
     }
 
     td img:hover {
       transform: scale(1.1);
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     }
 
     tr:hover {
       background-color: #e3f2fd;
-<<<<<<< HEAD
-    }
-
-    @media (max-width: 768px) {
-      .admin-container {
-        margin-left: 0;
-        padding: 15px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-    }
-=======
       transform: scale(1.02);
       transition: background-color 0.3s, transform 0.3s ease;
     }
@@ -269,25 +205,10 @@
       }
     }
     
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
   </style>
 </head>
 
 <body>
-<<<<<<< HEAD
-  <!-- Sidebar -->
-  <div class="w-full md:w-72 bg-gradient-to-br from-[#5fbac8] to-[#3f6ead] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
-    <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
-    <ul class="space-y-3">
-      <li><a href="gestioncitas.html" class="block hover:bg-white/20 p-2 rounded">Citas Solicitadas</a></li>
-      <li><a href="registrocitas.html" class="block hover:bg-white/20 p-2 rounded">Registro Citas</a></li>
-      <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
-      <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
-      <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
-      <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
-    </ul>
-  </div>
-=======
 <!-- Sidebar -->
 <div class="w-full md:w-72 bg-gradient-to-br from-[#33C0F1] to-[#1E2D93] text-white p-7 md:fixed md:h-full top-0 left-0 z-10">
   <img class="h-24 mx-auto mb-4" src="Imagenes/logo2.png" alt="Logo" />
@@ -297,29 +218,16 @@
     <li><a href="5. Modificar-tipdelasemana.html" class="block hover:bg-white/20 p-2 rounded">Modificar Tip de la Semana</a></li>
     <li><a href="5. modificar-galeria.html" class="block hover:bg-white/20 p-2 rounded">Modificar fotos "Nuestro trabajo"</a></li>
     <li><a href="modificarservicios.html" class="block hover:bg-white/20 p-2 rounded">Modificar Servicios</a></li>
+     <li><a href="backups.html" class="block hover:bg-white/20 p-2 rounded">Copia de seguridad</a></li>
     <li><a href="1. Index.html" class="block hover:bg-white/20 p-2 rounded">Cerrar sesión</a></li>
   </ul>
 </div>
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
 
   <div class="admin-container">
     <h1>Administrar Servicios</h1>
 
     <div class="input-group">
       <label for="nombreServicio">Nombre del Servicio</label>
-<<<<<<< HEAD
-      <input type="text" id="nombreServicio" placeholder="Nombre del Servicio" />
-
-      <label for="imagenServicio">Imagen del Servicio</label>
-      <input type="file" id="imagenServicio" accept="image/*" />
-
-      <label for="descripcionServicio">Descripción del Servicio</label>
-      <input type="text" id="descripcionServicio" placeholder="Descripción del Servicio" />
-    </div>
-
-    <button onclick="agregarServicio()">Agregar Servicio</button>
-    <button onclick="borrarTodo()" style="background-color: red;">Borrar Todos</button>
-=======
       <input type="text" id="nombreServicio" placeholder="Nombre del Servicio">
 
       <label for="imagenServicio">Imagen del Servicio</label>
@@ -330,7 +238,6 @@
     </div>
 
     <button onclick="agregarServicio()">Agregar Servicio</button>
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
 
     <table>
       <thead>
@@ -341,55 +248,15 @@
           <th>Acciones</th>
         </tr>
       </thead>
-<<<<<<< HEAD
-      <tbody id="tablaServicios"></tbody>
-=======
       <tbody id="tablaServicios">
         <!-- Servicios se cargan aquí -->
       </tbody>
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     </table>
   </div>
 
   <script>
     let servicios = [];
 
-<<<<<<< HEAD
-    window.onload = function () {
-      const guardados = localStorage.getItem('servicios');
-      if (guardados) {
-        servicios = JSON.parse(guardados);
-        renderizarServicios();
-      }
-    };
-
-    function guardarEnLocalStorage() {
-      localStorage.setItem('servicios', JSON.stringify(servicios));
-    }
-
-    function agregarServicio() {
-      const nombre = document.getElementById('nombreServicio').value.trim();
-      const descripcion = document.getElementById('descripcionServicio').value.trim();
-      const imagenInput = document.getElementById('imagenServicio');
-
-      if (!nombre || !descripcion || !imagenInput.files[0]) {
-        alert('Por favor, completa todos los campos.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const imagen = e.target.result;
-        servicios.push({ nombre, descripcion, imagen });
-        guardarEnLocalStorage();
-        renderizarServicios();
-        limpiarFormulario();
-      };
-      reader.readAsDataURL(imagenInput.files[0]);
-    }
-
-=======
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
     function renderizarServicios() {
       const tabla = document.getElementById('tablaServicios');
       tabla.innerHTML = '';
@@ -407,46 +274,8 @@
         `;
       });
     }
-<<<<<<< HEAD
-
-    function eliminarServicio(index) {
-      if (confirm("¿Eliminar este servicio?")) {
-        servicios.splice(index, 1);
-        guardarEnLocalStorage();
-        renderizarServicios();
-      }
-    }
-
-    function editarServicio(index) {
-      const servicio = servicios[index];
-      document.getElementById('nombreServicio').value = servicio.nombre;
-      document.getElementById('descripcionServicio').value = servicio.descripcion;
-      servicios.splice(index, 1); // Eliminar para reemplazar al agregar de nuevo
-      guardarEnLocalStorage();
-      renderizarServicios();
-    }
-
-    function borrarTodo() {
-      if (confirm("¿Seguro que deseas eliminar todos los servicios?")) {
-        servicios = [];
-        guardarEnLocalStorage();
-        renderizarServicios();
-      }
-    }
-
-    function limpiarFormulario() {
-      document.getElementById('nombreServicio').value = '';
-      document.getElementById('descripcionServicio').value = '';
-      document.getElementById('imagenServicio').value = '';
-    }
-  </script>
-</body>
-
-</html>
-=======
   </script>
 </body>
 </html>
 </html>
 
->>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
