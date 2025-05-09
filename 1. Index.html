@@ -122,6 +122,7 @@
 
 <<<<<<< HEAD
 
+<<<<<<< HEAD
     <!--Galeria de imagenes-->
     <section class="nuestro-trabajo">
         <h2>Nuestro Trabajo</h2>
@@ -207,6 +208,16 @@
     document.addEventListener('DOMContentLoaded', cargarGaleria);
 </script>
 >>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
+=======
+   <!--Galeria de imagenes-->
+<section class="nuestro-trabajo">
+    <h2>Nuestro Trabajo</h2>
+    <p>Aquí puedes ver algunas imágenes de nuestro día a día y los servicios que ofrecemos en la clínica.</p>
+    <div class="galeria" id="galeria-trabajo">
+        <!-- Las imágenes se cargarán dinámicamente aquí -->
+    </div>
+</section>
+>>>>>>> mejoras-inicio
 
     <!--Mapa-->
     <section class="f-mapa">
@@ -287,5 +298,53 @@
 
     <script src="sienna.js"></script>
     <script src="custom.js"></script>
+
+    <script>
+    // Función para cargar las imágenes de la galería en el orden correcto
+    function cargarGaleria() {
+        const galeria = document.getElementById('galeria-trabajo');
+        galeria.innerHTML = ''; // Limpiar galería antes de cargar
+        
+        const imagenesGuardadas = JSON.parse(localStorage.getItem('galeriaImagenes')) || [];
+        
+        // Si no hay imágenes guardadas, mostrar las predeterminadas
+        if (imagenesGuardadas.length === 0) {
+            const imagenesPredeterminadas = [
+                'Imagenes/w1.jpeg',
+                'Imagenes/w2.jpeg',
+                'Imagenes/w3.jpeg',
+                'Imagenes/w4.jpeg',
+                'Imagenes/w5.jpeg',
+                'Imagenes/w6.jpeg'
+            ];
+            
+            imagenesPredeterminadas.forEach(src => {
+                const div = document.createElement('div');
+                div.className = 'imagen';
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Nuestro trabajo';
+                div.appendChild(img);
+                galeria.appendChild(div);
+            });
+        } else {
+            // Mostrar las imágenes guardadas en el orden exacto
+            imagenesGuardadas.forEach(imagen => {
+                if (imagen && imagen.data) {
+                    const div = document.createElement('div');
+                    div.className = 'imagen';
+                    const img = document.createElement('img');
+                    img.src = imagen.data;
+                    img.alt = 'Nuestro trabajo';
+                    div.appendChild(img);
+                    galeria.appendChild(div);
+                }
+            });
+        }
+    }
+
+    // Cargar la galería cuando la página esté lista
+    document.addEventListener('DOMContentLoaded', cargarGaleria);
+</script>
 </body>
 </html>
