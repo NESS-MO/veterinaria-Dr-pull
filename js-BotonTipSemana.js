@@ -100,10 +100,17 @@ function addFloatingTipStyles() {
 
     .cabecera-tip {
 <<<<<<< HEAD
+<<<<<<< HEAD
+    background: linear-gradient(135deg, #33C0F1, #1E2D93);
+=======
+    background: linear-gradient(135deg, #5fbac8, #3f6ead);
+>>>>>>> mejoras-inicio
+=======
 =======
 
 >>>>>>> 8407a9cf879eb7cb7026c22c24becaecf898d8bf
     background: linear-gradient(135deg, #33C0F1, #1E2D93);
+>>>>>>> 13ff9b90037bcf044b62ee873e99729d83cbcca4
       color: white;
       padding: 15px 20px;
       display: flex;
